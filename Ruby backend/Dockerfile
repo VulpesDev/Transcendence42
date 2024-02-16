@@ -5,7 +5,7 @@ FROM ruby:latest
 WORKDIR /app
 
 # Copy the Gemfile and Gemfile.lock from your project directory into the container
-COPY Gemfile ./
+COPY Gemfile public ./
 
 # Install dependencies using Bundler
 RUN bundle install

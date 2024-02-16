@@ -8,24 +8,26 @@ set :port, 8080
 set :bind, '0.0.0.0'
 set :server, 'thin'
 set :sockets, []
+set :public_folder, 'public'
 
 get '/' do
   if !request.websocket?
-    erb :index
+    # erb :index
+    File.read(File.join('public', 'index.html'))
   else
-    request.websocket do |ws|
-      ws.onopen do
-        ws.send("Hello World!")
-        settings.sockets << ws
-      end
-      ws.onmessage do |msg|
-        EM.next_tick { settings.sockets.each{|s| s.send(msg) } }
-      end
-      ws.onclose do
-        warn("websocket closed")
-        settings.sockets.delete(ws)
-      end
-    end
+    # request.websocket do |ws|
+    #   ws.onopen do
+    #     ws.send("Hello World!")
+    #     settings.sockets << ws
+    #   end
+    #   ws.onmessage do |msg|
+    #     EM.next_tick { settings.sockets.each{|s| s.send(msg) } }
+    #   end
+    #   ws.onclose do
+    #     warn("websocket closed")
+    #     settings.sockets.delete(ws)
+    #   end
+    # end
   end
 end
 
