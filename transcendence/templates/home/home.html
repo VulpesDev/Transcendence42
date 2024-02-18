@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pong Game</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #111;
+        color: #FFF;
+    }
+
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 30px;
+        animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.1); }
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #FF5733;
+        color: #FFF;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.5rem;
+    }
+
+    .button:hover {
+        background-color: #FF8C66;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to Pong Game</h1>
+    <a href="/pong" class="button">Start Game</a>
+</div>
+</body>
+</html>
