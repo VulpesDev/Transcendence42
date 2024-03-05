@@ -16,3 +16,5 @@ def games(request):
 def drum(request):
 	return render(request, "drum/drum.html")
 
+def loginPage(request):
+	return render(request, "login_register.html", context={"title": "Login"})

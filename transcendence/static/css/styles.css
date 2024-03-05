@@ -325,3 +325,54 @@ img {
   width: 50px;
   border-radius: 9999px;
 }
+
+/*=============== LOGIN ===============*/
+
+.login {
+  background-color: var(--container-color);
+  width: 30rem;
+  margin: 30rem auto;
+  padding: 2rem;
+  height: 35vh;
+  border-radius: 1rem;
+  color: white;
+}
+
+.btn_login {
+  text-align: center;
+  background-color: beige;
+  color: black;
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+  margin: 2rem 0 1rem;
+}
+
+.btn_login:hover {
+  background-color: #03b4a5;
+  color: black;
+}
+
+.register {
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn_42 {
+  text-align: center;
+  background-color: #64f6ea;
+  color: black;
+  padding: 0.5rem 1rem;
+  width: 45%;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+  margin: 2rem 0 0.2rem;
+}
+
+.btn_42:hover {
+  background-color: #03b4a5;
+  color: black;
+}
