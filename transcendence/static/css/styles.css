@@ -250,6 +250,7 @@ img {
 /*=============== GAMES ===============*/
 
 .games {
+  z-index: 1;
   background-color: var(--container-color);
   width: 90%;
   margin: 6rem auto;
