@@ -2,25 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Pong Game</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background-color: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      canvas {
-        border: 2px solid white;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/css/styles.css" />
+    <title>transcendence</title>
   </head>
   <body>
-    <canvas id="gameCanvas" width="800" height="400"></canvas>
-    {% load static %}
-    <script src="{% static 'js/pong_game.js' %}?v={{ timestamp }}"></script>
+    {% include '../navbar.html'%}
+    <div class="games">
+      <div class="logo">
+        <img src="../../static/assets/img/logo.png" alt="logo" />
+      </div>
+      <div>
+        <h1 class="heading">Pong</h1>
+      </div>
+      <div class="players">
+        <div class="player">
+          <img
+            src="../../static/assets/img/profile.jpeg"
+            alt="user"
+            class="profile_pong"
+          />
+          <div>
+            <h2 class="username">Username</h2>
+            <p>Wins: 3</p>
+          </div>
+        </div>
+        <div class="player">
+          <img
+            src="../../static/assets/img/profile.jpeg"
+            alt="user"
+            class="profile_pong"
+          />
+          <div>
+            <h2 class="username">Username</h2>
+            <p>Wins: 3</p>
+          </div>
+        </div>
+      </div>
+      <div class="pong">
+        <canvas id="pong_game" width="800" height="400"></canvas>
+        {% load static %}
+        <script src="{% static 'js/pong_game.js' %}?v={{ timestamp }}"></script>
+      </div>
+    </div>
   </body>
 </html>

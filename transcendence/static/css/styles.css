@@ -284,3 +284,44 @@ img {
   background-color: var(--body-color);
   border-color: white;
 }
+
+/*=============== PONG ===============*/
+
+.pong {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+#pong_game {
+  border: 0.8rem solid white;
+  border-radius: 1rem;
+  background-image: url("../assets/img/blueThemeSet.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.players {
+  display: flex;
+  width: 800px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile_pong {
+  width: 50px;
+  border-radius: 9999px;
+}
