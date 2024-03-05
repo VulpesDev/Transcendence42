@@ -1,57 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pong Game</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #111;
-        color: #FFF;
-    }
-
-    .container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-    }
-
-    h1 {
-        font-size: 3rem;
-        margin-bottom: 30px;
-        animation: pulse 1s infinite alternate;
-    }
-
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        100% { transform: scale(1.1); }
-    }
-
-    .button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #FF5733;
-        color: #FFF;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 1.5rem;
-    }
-
-    .button:hover {
-        background-color: #FF8C66;
-    }
-</style>
-</head>
-<body>
-<div class="container">
-    <h1>Welcome to Pong Game</h1>
-    <a href="/pong" class="button">Start Game</a>
-</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/css/styles.css" />
+    <title>transcendence</title>
+  </head>
+  <body>
+    <div class="home">
+      <div class="logo">
+        <img src="../../static/assets/img/logo.png" alt="logo" />
+      </div>
+      <div class="home_left">
+        <h1 class="heading">Welcome to transcendence</h1>
+        <p>
+          This is a simple web application that allows you to play a game of
+          Rock-Paper-Scissors with your friends. You can also chat with them
+          while playing the game.
+        </p>
+        <div class="home_button">
+          <button class="button">
+            <a href="/login" class="button">Login</a>
+          </button>
+        </div>
+      </div>
+      <div class="home_right">
+        <img
+          class="home_img"
+          src="../../static/assets/img/login.svg"
+          alt="play"
+        />
+      </div>
+    </div>
+  </body>
 </html>

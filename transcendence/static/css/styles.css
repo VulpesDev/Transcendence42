@@ -1,0 +1,286 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  /*
+        Purple: hsl(250, 66%, 75%)
+        Blue: hsl(207, 90%, 72%)
+        Pink: hsl(356, 66%, 75%)
+        Teal: hsl(174, 63%, 62%)
+  */
+  --first-hue: 250;
+  --sat: 66%;
+  --lig: 75%;
+  --second-hue: 219;
+
+  --first-color: #81689d;
+  --first-color-alt: #81689d;
+  --title-color: hsl(var(--second-hue), 15%, 95%);
+  --text-color: hsl(var(--second-hue), 8%, 75%);
+  --body-color: #1f2544;
+  --container-color: #474f7a;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --biggest-font-size: 1.75rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+  --tiny-font-size: 0.625rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semibold: 600;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 968px) {
+  :root {
+    --biggest-font-size: 2.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--body-color);
+  color: var(--text-color);
+  transition: 300ms ease-in;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+  font-weight: var(--font-semibold);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== THEME ===============*/
+.change-theme {
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.change-theme:hover {
+  color: var(--first-color);
+}
+
+/*=============== LAYOUT ===============*/
+
+.heading {
+  margin-bottom: 2rem;
+  font-size: 4rem;
+}
+
+.logo {
+  position: absolute;
+  width: 5%;
+  top: 2rem;
+  left: 2rem;
+}
+
+.button {
+  background-color: var(--first-color);
+  padding: 1rem 4rem;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--body-color);
+}
+
+/*=============== NAV ===============*/
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__menu {
+  margin-bottom: 4rem;
+  margin: 0 auto;
+  width: 30%;
+  position: fixed;
+  bottom: 4rem;
+  background-color: white;
+  border-radius: 4rem;
+  padding: 2rem 3rem;
+  backdrop-filter: blur(10px);
+  left: 20px;
+  right: 20px;
+  transition: 0.4s;
+}
+
+.nav__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__link {
+  color: var(--text-color);
+  font-size: 1.25rem;
+  padding: 0.4rem;
+  display: flex;
+  border-radius: 5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  background-image: url("../assets/img/logo.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.active-link {
+  background: linear-gradient(180deg);
+  box-shadow: 0 0 100px var(--first-color);
+  color: var(--first-color);
+}
+
+/* Change background header */
+
+.scroll-header {
+  box-shadow: 0 4px 4px hsla(0, 0, 4%, 0.3);
+}
+/*=============== HOME ===============*/
+
+.home {
+  background-color: var(--container-color);
+  width: 90%;
+  margin: 6rem auto;
+  padding: 2rem;
+  height: 85vh;
+  border-radius: 1rem;
+  display: flex;
+}
+
+.home_left {
+  flex: 1 1 30%;
+  width: 30%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.home_right {
+  flex: 1 1 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.home_img {
+  width: 80%;
+  height: 80%;
+}
+
+.home_button {
+  position: relative;
+  padding-top: 3rem;
+}
+
+/*=============== GAMES ===============*/
+
+.games {
+  background-color: var(--container-color);
+  width: 90%;
+  margin: 6rem auto;
+  padding: 2rem;
+  height: 85vh;
+  border-radius: 1rem;
+}
+
+.games_list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.games_item {
+  padding: 4rem;
+  border: solid;
+  border-color: var(--body-color);
+  border-width: 0.4rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  cursor: pointer;
+  background-image: url("../assets/img/logo.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.games_item:hover {
+  background-color: var(--body-color);
+  border-color: white;
+}
