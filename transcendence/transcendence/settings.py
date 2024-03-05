@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3rkx968itgk(1v$1u4$*4p!u=eotq&wc_5x9@p0w)p$$0qtlxo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
 
 # Application definition
 
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'daphne',
     'django.contrib.staticfiles',
 	'base.apps.BaseConfig',
 ]
@@ -79,8 +78,12 @@ WSGI_APPLICATION = 'transcendence.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
@@ -137,6 +140,8 @@ CHANNEL_LAYERS = {
 	}
 }
 
-LOGIN_REDIRECT_URL = "chat-page"
+# LOGIN_REDIRECT_URL = "games"
 
-LOGOUT_REDIRECT_URL = "login-user"
+# LOGOUT_REDIRECT_URL = "login"
+
+# AUTH_USER_MODEL = "base.User" 
