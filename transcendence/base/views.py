@@ -13,6 +13,13 @@ users = [
     {"id": 2, "username": "elias", "email": "elias", "password": "elias"},
 ]
 
+def multi(request):
+    game_state = {
+        'player1Score': 0,
+        'player2Score': 0,
+    }
+    return render(request, 'multiplayer_game/multi.html', {'game_state': game_state})
+
 # Create your views here.
 def home(request):
 	return render(request, "home/home.html")
@@ -32,6 +39,19 @@ def games(request):
 @login_required(login_url='login')
 def rps(request):
 	return render(request, "rps/rps.html")
+
+@login_required(login_url='login')
+def stats(request):
+	return render(request, "stats/stats.html")
+
+@login_required(login_url='login')
+def profile(request):
+	return render(request, "profile/profile.html")
+
+@login_required(login_url='login')
+def edit_profile(request):
+	return render(request, "edit_profile/edit_profile.html")
+
 
 def loginPage(request):
     page = 'login'

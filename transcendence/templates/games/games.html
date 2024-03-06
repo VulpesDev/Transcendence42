@@ -1,28 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../static/css/styles.css" />
-    <title>transcendence</title>
-  </head>
-  <body>
-    {% include '../navbar.html'%}
-    <div class="games">
-      <div class="logo">
-        <img src="../../static/assets/img/logo.png" alt="logo" />
-      </div>
-      <div>
-        <h1 class="heading">Games</h1>
-      </div>
-      <div class="games_list">
-        <a href="/pong" class="games_item">
-          <p>pong</p>
-        </a>
-        <a href="/rps" class="games_item">
-          <p>other</p>
-        </a>
-      </div>
-    </div>
-  </body>
-</html>
+{% extends 'main.html' %} {% block content %}
+
+<div>
+  <h1 class="heading">Games</h1>
+</div>
+<div class="games_list">
+  <a href="/pong" class="games_item games_1"> </a>
+  <a href="/rps" class="games_item games_2"> </a>
+</div>
+
+{% endblock content %}

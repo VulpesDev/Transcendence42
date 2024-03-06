@@ -192,10 +192,34 @@ img {
   padding: 1rem;
   border-radius: 1rem;
   cursor: pointer;
-  background-image: url("../assets/img/logo.png");
+}
+
+.nav__1 {
+  background-image: url("../assets/img/navbar/1.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.nav__2 {
+  background-image: url("../assets/img/navbar/2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.nav__3 {
+  background-image: url("../assets/img/navbar/3.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.nav__4 {
+  background-image: url("../assets/img/profile.jpeg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 9999px;
 }
 
 .active-link {
@@ -208,6 +232,12 @@ img {
 
 .scroll-header {
   box-shadow: 0 4px 4px hsla(0, 0, 4%, 0.3);
+}
+
+.profile {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
 }
 /*=============== HOME ===============*/
 
@@ -275,7 +305,20 @@ img {
   align-items: center;
   border-radius: 1rem;
   cursor: pointer;
-  background-image: url("../assets/img/logo.png");
+  width: 180px;
+  height: 180px;
+  padding: 1rem;
+}
+
+.games_1 {
+  background-image: url("../assets/img/table_tennis.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.games_2 {
+  background-image: url("../assets/img/rps.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

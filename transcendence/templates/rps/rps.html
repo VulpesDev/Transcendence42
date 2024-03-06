@@ -1,90 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../static/css/rps.css" />
-    <link rel="stylesheet" href="../../static/css/styles.css" />
-
-    <title>RPS</title>
-  </head>
-  <body class="preload">
-    {% include '../navbar.html'%}
-    <div class="games">
-      <div class="logo">
-        <img src="../../static/assets/img/logo.png" alt="logo" />
-      </div>
-      <div class="container">
-        <header class="header">
-          <img
-            src="../../static/assets/rps_images/logo.svg"
-            alt="logo"
-            class="logo_rps"
-          />
-          <div class="score">
-            <div class="score__title">score</div>
-            <div class="score__number">0</div>
-          </div>
-        </header>
-        <section class="game">
-          <button class="choice-btn" data-choice="paper">
-            <div class="choice paper">
-              <img
-                src="../../static/assets/rps_images/icon-paper.svg"
-                alt="Paper"
-              />
-            </div>
-          </button>
-          <button class="choice-btn" data-choice="scissors">
-            <div class="choice scissors">
-              <img
-                src="../../static/assets/rps_images/icon-scissors.svg"
-                alt="Scissors"
-              />
-            </div>
-          </button>
-          <button class="choice-btn" data-choice="rock">
-            <div class="choice rock">
-              <img
-                src="../../static/assets/rps_images/icon-rock.svg"
-                alt="Rock"
-              />
-            </div>
-          </button>
-        </section>
-      </div>
-
-      <section class="results hidden">
-        <h2 class="results__heading">you picked</h2>
-        <h2 class="results__heading">the house picked</h2>
-        <div class="results__result"></div>
-        <div class="results__winner hidden">
-          <h3 class="results__text"></h3>
-          <button class="play-again">play again</button>
-        </div>
-        <div class="results__result"></div>
-      </section>
-
-      <button class="rules-btn" tabindex="1">rules</button>
-      <div class="modal">
-        <div class="modal__container">
-          <header class="modal__header">
-            <h2 class="modal__heading">rules</h2>
-            <button class="close-btn">
-              <img
-                src="../../static/assets/rps_images/icon-close.svg"
-                alt="Close Button"
-              />
-            </button>
-          </header>
-          <img
-            src="../../static/assets/rps_images/image-rules.svg"
-            alt="Rules Image"
-            class="rules-img"
-          />
-        </div>
-      </div>
+{% extends 'main.html' %} {% block content %}
+<link rel="stylesheet" href="../../static/css/rps.css" />
+<div class="container">
+  <header class="header">
+    <img
+      src="../../static/assets/rps_images/logo.svg"
+      alt="logo"
+      class="logo_rps"
+    />
+    <div class="score">
+      <div class="score__title">score</div>
+      <div class="score__number">0</div>
     </div>
-    <script src="../../static/js/rps.js" defer></script>
-  </body>
-</html>
+  </header>
+  <section class="game">
+    <button class="choice-btn" data-choice="paper">
+      <div class="choice paper">
+        <img src="../../static/assets/rps_images/icon-paper.svg" alt="Paper" />
+      </div>
+    </button>
+    <button class="choice-btn" data-choice="scissors">
+      <div class="choice scissors">
+        <img
+          src="../../static/assets/rps_images/icon-scissors.svg"
+          alt="Scissors"
+        />
+      </div>
+    </button>
+    <button class="choice-btn" data-choice="rock">
+      <div class="choice rock">
+        <img src="../../static/assets/rps_images/icon-rock.svg" alt="Rock" />
+      </div>
+    </button>
+  </section>
+</div>
+
+<section class="results hidden">
+  <h2 class="results__heading">you picked</h2>
+  <h2 class="results__heading">the house picked</h2>
+  <div class="results__result"></div>
+  <div class="results__winner hidden">
+    <h3 class="results__text"></h3>
+    <button class="play-again">play again</button>
+  </div>
+  <div class="results__result"></div>
+</section>
+
+<button class="rules-btn" tabindex="1">rules</button>
+<div class="modal">
+  <div class="modal__container">
+    <header class="modal__header">
+      <h2 class="modal__heading">rules</h2>
+      <button class="close-btn">
+        <img
+          src="../../static/assets/rps_images/icon-close.svg"
+          alt="Close Button"
+        />
+      </button>
+    </header>
+    <img
+      src="../../static/assets/rps_images/image-rules.svg"
+      alt="Rules Image"
+      class="rules-img"
+    />
+  </div>
+  <script src="../../static/js/rps.js" defer></script>
+
+  {% endblock content %}
+</div>
