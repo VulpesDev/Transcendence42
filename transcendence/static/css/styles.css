@@ -234,10 +234,43 @@ img {
   box-shadow: 0 4px 4px hsla(0, 0, 4%, 0.3);
 }
 
+/* .profile {
+} */
 .profile {
   position: absolute;
   top: 2rem;
   right: 2rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--container-color);
+  min-width: 120px;
+  border: solid white;
+  border-radius: 0.5rem;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 250px;
+  height: 80px;
+}
+
+.profile:hover .dropdown-content {
+  display: block;
+  right: 0;
+}
+
+.dropdown_text {
+  padding: 1.5rem;
+  text-align: center;
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.dropdown_text:hover {
+  color: rgb(133, 133, 133);
 }
 /*=============== HOME ===============*/
 
@@ -531,4 +564,78 @@ img {
 }
 .line_text {
   margin-bottom: -2rem;
+}
+
+/*=============== MODAL ===============*/
+
+/* Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  color: var(--body-color);
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 2rem;
+  width: 30%; /* Could be more or less, depending on screen size */
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  top: 1rem;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal_header {
+  color: var(--body-color);
+}
+
+.profile_modal {
+  margin: 4rem 4rem 2rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.modal_img {
+  margin: auto 2rem auto 0;
+  width: 50px;
+  border-radius: 9999px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_text {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.modal_form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 0 4rem;
 }

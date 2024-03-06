@@ -4,8 +4,28 @@
   <h1 class="heading">Games</h1>
 </div>
 <div class="games_list">
-  <a href="/pong" class="games_item games_1"> </a>
+  <a href="" id="modalButton" class="games_item games_1"> </a>
   <a href="/rps" class="games_item games_2"> </a>
 </div>
 
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 class="modal_header">Edit Profile:</h1>
+    <div class="profile_modal">
+      <div class="">
+        <img
+          class="modal_img"
+          src="../static/assets/img/profile.jpeg"
+          alt="user image"
+        />
+      </div>
+      <div class="modal_text">
+        <p>Username: ekayatz</p>
+        <p>email: ekayatz@student.42berlin.de</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../static/js/Modal.js"></script>
 {% endblock content %}

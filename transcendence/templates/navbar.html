@@ -1,6 +1,46 @@
+<!-- <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-theme.css" />
+<link rel="stylesheet" href="../static/bootstrap/css/bootstrap-theme.min.css" /> -->
+<!-- <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css" /> -->
+<!-- <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" /> -->
+
 <div>
   <div class="profile">
     <img class="profile_pong" src="../static/assets/img/profile.jpeg" alt="" />
+    <div class="dropdown-content">
+      <a href="" id="modalButton" class="dropdown_text">Configure Profile</a>
+      <br />
+      <a href="{% url 'logout' %}" class="dropdown_text">Logout</a>
+    </div>
+  </div>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h1 class="modal_header">Edit Profile:</h1>
+      <div class="profile_modal">
+        <div class="">
+          <img
+            class="modal_img"
+            src="../static/assets/img/profile.jpeg"
+            alt="user image"
+          />
+        </div>
+        <div class="modal_text">
+          <p>Username: ekayatz</p>
+          <p>email: ekayatz@student.42berlin.de</p>
+        </div>
+      </div>
+
+      <form action="" method="POST" class="modal_form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Name" />
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" placeholder="Email" />
+        <label for="email">Image URL:</label>
+        <input type="text" id="email" name="email" placeholder="Image URL" />
+        <br />
+        <input type="submit" value="Submit" class="submit_button" />
+      </form>
+    </div>
   </div>
   <nav class="nav">
     <div class="nav__menu">
@@ -22,3 +62,7 @@
     </div>
   </nav>
 </div>
+
+<script src="../static/js/Modal.js"></script>
+<script src="../static/bootstrap/js/bootstrap.js"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js"></script>
