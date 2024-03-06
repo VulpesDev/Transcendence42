@@ -420,3 +420,115 @@ img {
   background-color: #03b4a5;
   color: black;
 }
+
+/*=============== STATS ===============*/
+
+.stats {
+  height: 10vh;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.stats_heading {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.stats_left {
+  width: 30%;
+  padding: 0rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats_game {
+  width: 600px; /* Adjust the width as needed */
+  padding: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem 0 0 1rem;
+  margin-bottom: 1rem;
+}
+
+.stats_result {
+  width: 200px;
+  font-size: large;
+  text-align: left;
+  /* Center-align the text */
+}
+.stats_stand {
+  width: 300px;
+  font-size: large;
+  text-align: left;
+  /* Center-align the text */
+}
+.stats_against {
+  width: 600px;
+  font-size: medium;
+  text-align: left;
+  /* Center-align the text */
+}
+
+.stats_win {
+  background: linear-gradient(to right, #277027, rgba(0, 255, 0, 0));
+}
+.stats_lose {
+  background: linear-gradient(to right, #962b2b, rgba(255, 0, 0, 0));
+}
+
+.stats_draw {
+  background: linear-gradient(to right, #414141, rgba(0, 0, 0, 0));
+}
+
+.stats_right {
+  width: 60%;
+  padding: 0rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.graphs {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 4rem;
+}
+
+.graph_text {
+  font-size: 1.2rem;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+  width: 300px;
+}
+
+.graph_win {
+  color: #277027;
+}
+.graph_draw {
+  color: #414141;
+}
+.graph_lose {
+  color: #962b2b;
+}
+
+.graph_close {
+  color: #36a2eb;
+}
+.graph_easy {
+  color: #e7e7e7;
+}
+
+.graph_line {
+  margin-top: 3rem;
+  width: 800px;
+  height: 400px;
+  border-radius: 5px;
+}
+.line_text {
+  margin-bottom: -2rem;
+}

@@ -12,6 +12,20 @@ users = [
     {"id": 2, "username": "user2", "email": "user2@example.com", "password": "user2"},
     {"id": 2, "username": "elias", "email": "elias", "password": "elias"},
 ]
+    # Dummy game history data
+game_history = [
+        {'result': 'win', 'score': '8 : 6', 'against': 'Adriansadasds'},
+        {'result': 'lose', 'score': '4 : 10', 'against': 'John'},
+        {'result': 'lose', 'score': '9 : 1', 'against': 'Emily'},
+        {'result': 'lose', 'score': '9 : 1', 'against': 'Emily'},
+        {'result': 'win', 'score': '9 : 1', 'against': 'Emily'},
+        {'result': 'win', 'score': '9 : 1', 'against': 'Emily'},
+        {'result': 'lose', 'score': '7 : 7', 'against': 'Emily'},
+        {'result': 'win', 'score': '7 : 7', 'against': 'Emily'},
+        {'result': 'draw', 'score': '7 : 7', 'against': 'Emily'},
+        {'result': 'draw', 'score': '7 : 7', 'against': 'Emily'},
+        # Add more game results here...
+    ]
 
 def multi(request):
     game_state = {
@@ -42,7 +56,7 @@ def rps(request):
 
 @login_required(login_url='login')
 def stats(request):
-	return render(request, "stats/stats.html")
+    return render(request, "stats/stats.html", {'game_history': game_history})
 
 @login_required(login_url='login')
 def profile(request):

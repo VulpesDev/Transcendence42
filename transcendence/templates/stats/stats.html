@@ -2,4 +2,122 @@
 <div>
   <h1 class="heading">Stats</h1>
 </div>
+<div class="stats">
+  <div class="stats_left">
+    <div class="stats_heading">
+      <h2>History</h2>
+    </div>
+    {% for game in game_history %}
+    <div
+      class="stats_game {% if game.result == 'win' %}stats_win{% elif game.result == 'lose' %}stats_lose{% else %}stats_draw{% endif %}"
+    >
+      <h2 class="stats_result">{{ game.result }}</h2>
+      <p class="stats_stand">Result: {{ game.score }}</p>
+      {% if game.against|length > 8 %}
+      <p class="stats_against">Against: {{ game.against|slice:":10" }}...</p>
+      {% else %}
+      <p class="stats_against">Against: {{ game.against }}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="stats_right">
+    <div class="stats_heading">
+      <h2>Statistic</h2>
+    </div>
+    <div class="graphs">
+      <div class="">
+        <p class="graph_text">
+          <span class="graph_win">Wins</span>
+          <span class="grap_draw">Draws</span>
+          <span class="graph_lose">Loses</span>
+        </p>
+        <canvas id="donutGraph1"></canvas>
+      </div>
+      <div>
+        <p class="graph_text">
+          <span class="graph_close">close wins</span>
+          <span class="grap_easy">easy wins</span>
+        </p>
+        <canvas id="donutGraph2"></canvas>
+      </div>
+    </div>
+    <div class="graph_line">
+      <p class="graph_text line_text">Wins</p>
+      <canvas id="lineGraph" class="graph_line"></canvas>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+      // Data from Django views
+      var gameHistory = {{ game_history|safe }};
+
+      // Calculate wins, losses, and draws
+      var wins = gameHistory.filter(game => game.result === 'win').length;
+      var losses = gameHistory.filter(game => game.result === 'lose').length;
+      var draws = gameHistory.filter(game => game.result === 'draw').length;
+
+      // Calculate closeness of wins
+      var winCloseness = gameHistory.map(game => parseFloat(game.score.split(':')[0]) - parseFloat(game.score.split(':')[1]));
+      var avgWinCloseness = winCloseness.reduce((acc, val) => acc + val, 0) / winCloseness.length;
+
+      // Calculate player's development over time
+      function reverseArray(array) {
+          return array.slice().reverse();
+      }
+      var winCountByIndex = Array(gameHistory.length).fill(0);
+
+      //winCountByIndex = reverseArray(winCountByIndex);
+      gameHistory.forEach((game, index) => {
+        if (game.result === 'win') {
+            winCountByIndex[index] = (index === 0 ? 0 : winCountByIndex[index - 1]) + 1;
+        } else if (game.result === 'lose') {
+            winCountByIndex[index] = (index === 0 ? 0 : winCountByIndex[index - 1]) - 1;
+        } else {
+            winCountByIndex[index] = index === 0 ? 0 : winCountByIndex[index - 1];
+        }
+    });
+
+
+      // Donut graph for wins, losses, draws
+      new Chart(document.getElementById('donutGraph1'), {
+        type: 'doughnut',
+        data: {
+      	datasets: [{
+      	  data: [wins, losses, draws],
+      	  backgroundColor: ['#277027', '#962b2b', '#414141']
+      	}]
+        },
+        options: {}
+      });
+
+      // Donut graph for closeness of wins
+      new Chart(document.getElementById('donutGraph2'), {
+        type: 'doughnut',
+        data: {
+      	datasets: [{
+      	  data: [avgWinCloseness, 10 - avgWinCloseness],
+      	  backgroundColor: ['#36a2eb', '#e7e7e7']
+      	}]
+        },
+        options: {}
+      });
+
+      // Line graph for player's development
+      new Chart(document.getElementById('lineGraph'), {
+      type: 'line',
+      data: {
+          labels: gameHistory.map((game, index) => index + 1),
+          datasets: [{
+              label: 'Wins Over Time',
+              data: winCountByIndex,
+              borderColor: '#36a2eb',
+              fill: false
+          }]
+      },
+      options: {}
+  });
+</script>
+
 {% endblock content %}
