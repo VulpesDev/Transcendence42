@@ -2,25 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../static/css/styles.css" />
-    <title>transcendence</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/styles.css">
+    <title>Transcendence</title>
   </head>
   <body>
+  
+  	<nav>
+		<ul>
+			<br>
+			<li><a href="./" onclick="changeLanguage('en')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+			English</a></li>
+			<li><a href="./" onclick="changeLanguage('de')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+			Deutsch</a></li>
+		</ul>
+	</nav>
+	
     <div class="home">
       <div class="logo">
         <img src="../../static/assets/img/logo.png" alt="logo" />
       </div>
       <div class="home_left">
-        <h1 class="heading">Welcome to transcendence</h1>
-        <p>
-          This is a simple web application that allows you to play a game of
-          Rock-Paper-Scissors with your friends. You can also chat with them
-          while playing the game.
-        </p>
+	    <h1 data-i18n="welcome_message"></h1>
+		<p data-i18n="about"></p>
         <div class="home_button">
           <button>
-            <a href="{% url 'login' %}" class="button">Login</a>
+			<a href="{% url 'login' %}" class="button">data-il8n="login"</a>
           </button>
         </div>
       </div>
@@ -32,5 +39,7 @@
         />
       </div>
     </div>
+	
+	<script src="../../static/languages/translate.js"></script>
   </body>
 </html>
