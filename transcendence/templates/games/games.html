@@ -4,28 +4,63 @@
   <h1 class="heading">Games</h1>
 </div>
 <div class="games_list">
-  <a href="" id="modalButton" class="games_item games_1"> </a>
-  <a href="/rps" class="games_item games_2"> </a>
+  <a href="" id="modalPongButton" class="games_item games_1"> </a>
+  <a href="" id="modalRPSButton" class="games_item games_2"> </a>
 </div>
 
-<div id="myModal" class="modal">
+<div id="myModalRPS" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h1 class="modal_header">Edit Profile:</h1>
-    <div class="profile_modal">
-      <div class="">
-        <img
-          class="modal_img"
-          src="../static/assets/img/profile.jpeg"
-          alt="user image"
-        />
-      </div>
-      <div class="modal_text">
-        <p>Username: ekayatz</p>
-        <p>email: ekayatz@student.42berlin.de</p>
+    <h1 class="modal_header">Select Gamemode:</h1>
+    <div class="pong_modal">
+      <div class="pong_players">
+        <a href="/rps_2">
+          <img
+            class="pong_2 pong_player"
+            src="../../static/assets/img/2p.png"
+            alt="2 people"
+          />
+        </a>
+        <a href="/rps">
+          <img
+            class="pong_ai pong_player"
+            src="../../static/assets/img/ai.png"
+            alt=""
+        /></a>
       </div>
     </div>
   </div>
 </div>
-<script src="../../static/js/Modal.js"></script>
-{% endblock content %}
+
+<div id="myModalPong" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 class="modal_header">Select Gamemode:</h1>
+    <div class="pong_modal">
+      <div class="pong_players">
+        <a href="/pong">
+          <img
+            class="pong_2 pong_player"
+            src="../../static/assets/img/2p.png"
+            alt="2 people"
+          />
+        </a>
+        <a href="/pong_4">
+          <img
+            class="pong_4 pong_player"
+            src="../../static/assets/img/4p.png"
+            alt="4 people"
+          />
+        </a>
+        <a href="/pong_ai">
+          <img
+            class="pong_ai pong_player"
+            src="../../static/assets/img/ai.png"
+            alt=""
+        /></a>
+      </div>
+    </div>
+
+    {% endblock content %}
+  </div>
+</div>

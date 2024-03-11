@@ -1,5 +1,83 @@
 {% extends 'main.html' %} {% block content %}
 <div>
   <h1 class="heading">Profile</h1>
+  <div class="profile_div">
+    <div class="profile_left">
+      <div>
+        {% if users.profile.image.url %}
+        <img
+          class="profile_image"
+          src="{{ users.profile.image.url }}"
+          alt="Profile Image"
+        />
+        {% else %}
+        <img
+          class="profile_image"
+          src="../../static/assets/img/profile.jpeg"
+          alt="Default Profile Image"
+        />
+        {% endif %}
+      </div>
+      <div class="profile_info">
+        <h2 class="stats_heading">{{ user.username }}</h2>
+        <p>{{ user.email }}</p>
+      </div>
+    </div>
+    <div class="profile_right">
+      <h2 class="stats_heading">Select you Field</h2>
+      <button class="profile_btn_field" data-field="blue">
+        <img
+          class="profile_field_img"
+          src="../../static/assets/img/blueThemeSet.svg"
+          alt="blueTheme"
+        />
+      </button>
+      <button class="profile_btn_field" data-field="green">
+        <img
+          class="profile_field_img"
+          src="../../static/assets/img/greenThemeSet.svg"
+          alt="greenTheme"
+        />
+      </button>
+      <button class="profile_btn_field" data-field="white">
+        <img
+          class="profile_field_img"
+          src="../../static/assets/img/whiteThemeSet.svg"
+          alt="whiteTheme"
+        />
+      </button>
+      <form action="" method="post">
+        {% csrf_token %}
+        <input
+          type="text"
+          id="saveField"
+          name="field_color"
+          class="profile_form"
+          value=""
+        />
+        <button class="profile_submit">Submit</button>
+      </form>
+    </div>
+  </div>
 </div>
+<script>
+     var users_data = {{ users_data | safe }};
+     document.getElementById("saveField").value = users_data[2].field_color;
+     console.log("Field Color:", users_data[2].field_color);
+     document.querySelectorAll(".profile_btn_field").forEach((btn) => {
+       btn.addEventListener("click", (e) => {
+         const fieldValue = e.currentTarget.getAttribute("data-field");
+         document.getElementById("saveField").value = fieldValue;
+
+      // Update field color locally
+      users_data[2].field_color = fieldValue;
+
+      // Update UI to reflect the change
+      document.querySelectorAll(".profile_btn_field").forEach((btn) => {
+        btn.classList.remove("active");
+      });
+      e.currentTarget.classList.add("active");
+    });
+  });
+</script>
 {% endblock content %}

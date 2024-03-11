@@ -1,10 +1,10 @@
-// Initialize canvas and context
-const canvas = document.getElementById("pong_game");
-const ctx = canvas.getContext("2d");
+// Initialize pong and context
+const pong = document.getElementById("pong_game");
+const ctx = pong.getContext("2d");
 
 // Set canvas dimensions
-canvas.width = 800;
-canvas.height = 600;
+pong.width = 800;
+pong.height = 600;
 
 // Set paddle properties
 const paddleWidth = 10;
@@ -13,14 +13,14 @@ const paddleSpeed = 6;
 
 // Set ball properties
 const ballRadius = 10;
-let ballX = canvas.width / 2;
-let ballY = canvas.height / 2;
-let ballSpeedX = 5;
-let ballSpeedY = 5;
+let ballX = pong.width / 2;
+let ballY = pong.height / 2;
+let ballSpeedX = 3;
+let ballSpeedY = 3;
 
 // Set initial paddle positions
-let leftPaddleY = canvas.height / 2 - paddleHeight / 2;
-let rightPaddleY = canvas.height / 2 - paddleHeight / 2;
+let leftPaddleY = pong.height / 2 - paddleHeight / 2;
+let rightPaddleY = pong.height / 2 - paddleHeight / 2;
 
 // Set initial scores
 let leftPlayerScore = 0;
@@ -66,16 +66,13 @@ function keyUpHandler(event) {
 function movePaddles() {
   if (upKeyPressed && leftPaddleY > 0) {
     leftPaddleY -= paddleSpeed;
-  } else if (downKeyPressed && leftPaddleY < canvas.height - paddleHeight) {
+  } else if (downKeyPressed && leftPaddleY < pong.height - paddleHeight) {
     leftPaddleY += paddleSpeed;
   }
 
   if (upKeyPressedRight && rightPaddleY > 0) {
     rightPaddleY -= paddleSpeed;
-  } else if (
-    downKeyPressedRight &&
-    rightPaddleY < canvas.height - paddleHeight
-  ) {
+  } else if (downKeyPressedRight && rightPaddleY < pong.height - paddleHeight) {
     rightPaddleY += paddleSpeed;
   }
 }
@@ -103,7 +100,7 @@ function moveBall() {
   ballY += ballSpeedY;
 
   // Ball collision with top and bottom walls
-  if (ballY + ballRadius >= canvas.height || ballY - ballRadius <= 0) {
+  if (ballY + ballRadius >= pong.height || ballY - ballRadius <= 0) {
     ballSpeedY = -ballSpeedY;
   }
 
@@ -117,7 +114,7 @@ function moveBall() {
   }
 
   if (
-    ballX + ballRadius >= canvas.width - paddleWidth &&
+    ballX + ballRadius >= pong.width - paddleWidth &&
     ballY >= rightPaddleY &&
     ballY <= rightPaddleY + paddleHeight
   ) {
@@ -129,7 +126,7 @@ function moveBall() {
     // Right player scores when the ball misses the left paddle
     increaseScore("right");
     resetBall();
-  } else if (ballX + ballRadius >= canvas.width) {
+  } else if (ballX + ballRadius >= pong.width) {
     // Left player scores when the ball misses the right paddle
     increaseScore("left");
     resetBall();
@@ -138,10 +135,10 @@ function moveBall() {
 
 // Reset ball position
 function resetBall() {
-  ballX = canvas.width / 2;
-  ballY = canvas.height / 2;
+  ballX = pong.width / 2;
+  ballY = pong.height / 2;
   ballSpeedX = -ballSpeedX; // Reverse ball direction
-  ballSpeedY = Math.random() > 0.5 ? 5 : -5; // Randomize ball's vertical speed
+  ballSpeedY = Math.random() > 0.5 ? 3 : -3; // Randomize ball's vertical speed
 }
 
 // Increase score and display winner
@@ -186,17 +183,17 @@ function togglePause() {
 // Function to draw pause screen
 function drawPauseScreen() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0, 0, pong.width, pong.height);
 
   ctx.fillStyle = "white";
   ctx.font = "30px Arial";
   ctx.textAlign = "center";
-  ctx.fillText("Paused", canvas.width / 2, canvas.height / 2);
+  ctx.fillText("Paused", pong.width / 2, pong.height / 2);
 }
 // Main game loop
 function draw() {
-  // Clear canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Clear pong
+  ctx.clearRect(0, 0, pong.width, pong.height);
 
   if (isPaused) {
     // If game is paused, draw pause screen and return
@@ -211,12 +208,7 @@ function draw() {
 
   // Draw paddles
   drawPaddle(0, leftPaddleY, paddleWidth, paddleHeight); // Left paddle
-  drawPaddle(
-    canvas.width - paddleWidth,
-    rightPaddleY,
-    paddleWidth,
-    paddleHeight
-  ); // Right paddle
+  drawPaddle(pong.width - paddleWidth, rightPaddleY, paddleWidth, paddleHeight); // Right paddle
 
   // Draw ball
   drawBall(ballX, ballY, ballRadius);
@@ -239,23 +231,23 @@ function draw() {
 
 // Function to end the game and display winner message
 function endGame() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, pong.width, pong.height);
 
   ctx.fillStyle = "white";
   ctx.font = "40px Poppins";
   ctx.textAlign = "center";
-  ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2 - 40);
+  ctx.fillText("Game Over", pong.width / 2, pong.height / 2 - 40);
 
   // Determine the winner
   let winner = leftPlayerScore >= 11 ? "Player One" : "Player Two";
-  ctx.fillText(`Winner: ${winner}`, canvas.width / 2, canvas.height / 2);
+  ctx.fillText(`Winner: ${winner}`, pong.width / 2, pong.height / 2);
 
   // Ask for replay or back to home
   ctx.font = "20px Poppins";
   ctx.fillText(
     'Press "R" to replay or "H" to go back to home',
-    canvas.width / 2,
-    canvas.height / 2 + 40
+    pong.width / 2,
+    pong.height / 2 + 40
   );
 
   // Add event listener for keydown events

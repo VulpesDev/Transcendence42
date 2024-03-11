@@ -1,0 +1,40 @@
+{% extends 'main.html' %} {% block content %}
+
+<div>
+  <h1 class="heading">Pong</h1>
+</div>
+<div class="players">
+  <div class="player">
+    <img
+      src="../../static/assets/img/profile.jpeg"
+      alt="user"
+      class="profile_pong"
+    />
+    <div>
+      <h2 class="username">Username</h2>
+      <p>Wins: 3</p>
+    </div>
+  </div>
+  <div class="player">
+    <img
+      src="../../static/assets/img/profile.jpeg"
+      alt="user"
+      class="profile_pong"
+    />
+    <div>
+      <h2 class="username">Username</h2>
+      <p>Wins: 3</p>
+    </div>
+  </div>
+</div>
+<div class="pong">
+  <canvas
+    id="pong_game"
+    class="{% if specific_user_data.field_color == 'blue' %}pong_blue{% elif specific_user_data.field_color == 'green' %}pong_green {% elif specific_user_data.field_color == 'white' %}pong_white{% endif %}"
+    width="800"
+    height="400"
+  ></canvas>
+  {% load static %}
+  <script src="{% static 'js/pong_ai.js' %}?v={{ timestamp }}"></script>
+</div>
+{% endblock content %}

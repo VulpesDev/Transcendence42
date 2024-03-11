@@ -362,6 +362,46 @@ img {
   border-color: white;
 }
 
+.pong_2 {
+  border: 0.3rem solid var(--body-color);
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.pong_3 {
+  border: 0.3rem solid var(--body-color);
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.pong_4 {
+  border: 0.3rem solid var(--body-color);
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.pong_ai {
+  border: 0.3rem solid var(--body-color);
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.pong_player:hover {
+  background-color: var(--body-color);
+}
+
 /*=============== PONG ===============*/
 
 .pong {
@@ -377,7 +417,24 @@ img {
 #pong_game {
   border: 0.8rem solid white;
   border-radius: 1rem;
+}
+
+.pong_white {
+  background-image: url("../assets/img/whiteThemeSet.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pong_blue {
   background-image: url("../assets/img/blueThemeSet.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pong_green {
+  background-image: url("../assets/img/greenThemeSet.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -638,4 +695,76 @@ img {
   flex-direction: column;
   width: 40%;
   margin: 0 4rem;
+}
+
+/*=============== PROFILE ===============*/
+
+.profile_div {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: var(--container-color);
+  gap: 4rem;
+}
+
+.profile_image {
+  width: 100px;
+  border-radius: 9999px;
+}
+
+.profile_left {
+  gap: 2rem;
+  width: 30%;
+  display: flex;
+}
+
+.profile_right {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile_btn_field {
+  margin: 2rem 0;
+  padding: 0.5rem 0.5rem 0rem 0.5rem;
+  border-radius: 1rem;
+  background-color: var(--container-color);
+}
+
+.profile_field_img {
+  width: 100%;
+}
+
+.profile_btn_field.active {
+  border: 0.3rem solid white;
+}
+
+.profile_form {
+  display: flex;
+  margin-left: 0.5rem;
+  flex-direction: column;
+  border-radius: 0.2rem;
+  padding: 1rem;
+  border: none;
+  background-color: var(--body-color);
+  color: white;
+  display: none;
+}
+
+.profile_submit {
+  margin: 1rem 0.5rem;
+  text-align: center;
+  background-color: beige;
+  color: black;
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.profile_submit:hover {
+  background-color: #03b4a5;
+  color: black;
 }

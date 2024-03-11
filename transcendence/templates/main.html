@@ -12,13 +12,9 @@
       <div class="logo">
         <img src="../../static/assets/img/logo.png" alt="logo" />
       </div>
-      {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %} {% block content %} {% endblock %}
+      {% block content %} {% endblock %}
     </div>
+
+    <script src="../static/js/Modal.js"></script>
   </body>
 </html>
