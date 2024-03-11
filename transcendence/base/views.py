@@ -2,11 +2,10 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
 from .forms import MyUserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from .models import PongGame, RPSGame
+from .models import PongGame, RPSGame, User
 
 users = [
     {"id": 1, "username": "user1", "email": "user1@example.com", "password": "user1","bio": "I am a software developer", "field_color": "blue"},
@@ -40,28 +39,18 @@ def home(request):
 
 @login_required(login_url='login')
 def pong(request):
-    specific_user_data = users_data[2]
-    print(specific_user_data)
-    return render(request, "pong/pong.html", {'specific_user_data':
-     specific_user_data})
+    users_data = User.objects.get(username=request.user)
+    return render(request, "pong/pong.html", {'users_data': users_data})
 
 @login_required(login_url='login')
 def pong_4(request):
-    specific_user_data = users_data[2]
-    print(specific_user_data)
-    return render(request, "pong/pong_4.html", {'specific_user_data':
-     specific_user_data})
+    users_data = User.objects.get(username=request.user)
+    return render(request, "pong/pong_4.html", {'users_data': users_data})
 
 @login_required(login_url='login')
 def pong_ai(request):
-    specific_user_data = users_data[2]
-    print(specific_user_data)
-    return render(request, "pong/pong_ai.html", {'specific_user_data':
-     specific_user_data})
-
-@login_required(login_url='login')
-def chat(request):
-	return render(request, "chat/chat.html")
+    users_data = User.objects.get(username=request.user)
+    return render(request, "pong/pong_ai.html", {'users_data': users_data})
 
 @login_required(login_url='login')
 def games(request):
@@ -77,15 +66,20 @@ def rps_2(request):
 
 @login_required(login_url='login')
 def stats(request):
-    pong_history = PongGame.objects.all()
+    if request.user.is_authenticated:
+        logged_in_user = request.user
+        pong_history = PongGame.objects.filter(name=logged_in_user)
+        print(pong_history)
     return render(request, "stats/stats.html", {'game_history': pong_history})
 
 @login_required(login_url='login')
 def profile(request):
     if request.method == 'POST':
         field_color = request.POST.get('field_color')
-        print(field_color)
-        users_data[2]['field_color'] = field_color
+        user = User.objects.get(username=request.user)
+        user.field_color = field_color
+        user.save()
+        print('Color changed to', user.field_color)
     return render(request, "profile/profile.html", {'users_data': users_data})
 
 @login_required(login_url='login')

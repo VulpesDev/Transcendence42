@@ -11,7 +11,6 @@ urlpatterns = [
     path('pong_4/', views.pong_4, name="pong"),
     path('pong_ai/', views.pong_ai, name="pong"),
     path('games/', views.games, name="games"),
-    path('chat/', views.chat, name="chat"),
     path('rps/', views.rps, name="rps"),
     path('rps_2/', views.rps_2, name="rps"),
     path('profile/', views.profile, name="rps"),

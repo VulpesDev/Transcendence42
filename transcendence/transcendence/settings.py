@@ -148,4 +148,4 @@ CHANNEL_LAYERS = {
 
 # LOGOUT_REDIRECT_URL = "login"
 
-# AUTH_USER_MODEL = "base.User" 
+AUTH_USER_MODEL = "base.User" 

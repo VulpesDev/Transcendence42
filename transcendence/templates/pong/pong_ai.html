@@ -30,7 +30,7 @@
 <div class="pong">
   <canvas
     id="pong_game"
-    class="{% if specific_user_data.field_color == 'blue' %}pong_blue{% elif specific_user_data.field_color == 'green' %}pong_green {% elif specific_user_data.field_color == 'white' %}pong_white{% endif %}"
+    class="{% if users_data.field_color == 'blue' %}pong_blue{% elif users_data.field_color == 'green' %}pong_green {% elif users_data.field_color == 'white' %}pong_white{% endif %}"
     width="800"
     height="400"
   ></canvas>
