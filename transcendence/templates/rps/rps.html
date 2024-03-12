@@ -8,7 +8,7 @@
       class="logo_rps"
     />
     <div class="score">
-      <div class="score__title">score</div>
+      <div class="score__title"><b data-i18n="score"></b></div>
       <div class="score__number">0</div>
     </div>
   </header>
@@ -35,21 +35,21 @@
 </div>
 
 <section class="results hidden">
-  <h2 class="results__heading">you picked</h2>
-  <h2 class="results__heading">the house picked</h2>
+  <h2 class="results__heading"><b data-i18n="you_picked"></b></h2>
+  <h2 class="results__heading"><b data-i18n="house_picked"></b></h2>
   <div class="results__result"></div>
   <div class="results__winner hidden">
     <h3 class="results__text"></h3>
-    <button class="play-again">play again</button>
+    <button class="play-again"><b data-i18n="play_again"></b></button>
   </div>
   <div class="results__result"></div>
 </section>
 
-<button class="rules-btn" tabindex="1">rules</button>
+<button class="rules-btn" tabindex="1"><b data-i18n="rules"></b></button>
 <div class="modal">
   <div class="modal__container">
     <header class="modal__header">
-      <h2 class="modal__heading">rules</h2>
+      <h2 class="modal__heading"><b data-i18n="rules"></b></h2>
       <button class="close-btn">
         <img
           src="../../static/assets/rps_images/icon-close.svg"
@@ -64,6 +64,8 @@
     />
   </div>
   <script src="../../static/js/rps.js" defer></script>
+
+<script src="../../static/languages/translate.js"></script>
 
   {% endblock content %}
 </div>

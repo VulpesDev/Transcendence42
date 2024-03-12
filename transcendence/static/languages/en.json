@@ -7,6 +7,7 @@
 	"edit_profile": "Edit Profile: ",
 	"name": "Name: ",
 	"img_url": "Image URL: ",
+	"already": "Already signed up",
 	"email": "Email address",
 	"privacy": "We'll never share your email with anyone else.",
 	"password": "Password",
@@ -23,11 +24,14 @@
 	"house_picked": "the house picked",
 	"play_again": "play again",
 	"rules": "rules",
+	"result": "Result: ",
 	"against": "Against: ",
 	"wins": "Wins",
 	"draws": "Draws",
 	"losses": "Losses",
 	"close_wins": "Close Wins",
 	"easy_wins": "Easy Wins",
+	"stats": "Stats",
+	"history": "History",
 	"logout": "Logout"
 }

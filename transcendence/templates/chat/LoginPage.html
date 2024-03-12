@@ -4,7 +4,9 @@
     <form method="post">
       {% csrf_token %} {{form.as_p}}
       <br />
-      <button type="submit">Login</button>
+      <button type="submit"><b data-i18n="login"></b></button>
     </form>
+	
+	<script src="../../static/languages/translate.js"></script>
   </body>
 </html>

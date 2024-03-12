@@ -1,7 +1,7 @@
 {% extends 'main.html' %} {% block content %}
 
 <div>
-  <h1 class="heading">Games</h1>
+  <h1 class="heading"><b data-i18n="games"></b></h1>
 </div>
 <div class="games_list">
   <a href="" id="modalPongButton" class="games_item games_1"> </a>
@@ -11,7 +11,7 @@
 <div id="myModalRPS" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h1 class="modal_header">Select Gamemode:</h1>
+    <h1 class="modal_header"><b data-i18n="select_gamemode"></b></h1>
     <div class="pong_modal">
       <div class="pong_players">
         <a href="/rps_2">
@@ -35,7 +35,7 @@
 <div id="myModalPong" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h1 class="modal_header">Select Gamemode:</h1>
+    <h1 class="modal_header"><b data-i18n="select_gamemode"></b></h1>
     <div class="pong_modal">
       <div class="pong_players">
         <a href="/pong">
@@ -60,6 +60,8 @@
         /></a>
       </div>
     </div>
+
+	<script src="../../static/languages/translate.js"></script>
 
     {% endblock content %}
   </div>

@@ -1,22 +1,22 @@
 {% extends 'main.html' %} {% block content %}
 <div>
-  <h1 class="heading">Stats</h1>
+  <h1 class="heading"><b data-i18n="stats"></b></h1>
 </div>
 <div class="stats">
   <div class="stats_left">
     <div class="stats_heading">
-      <h2>History</h2>
+      <h2><b data-i18n="history"></b></h2>
     </div>
     {% for game in game_history %}
     <div
       class="stats_game {% if game.result == 'win' %}stats_win{% elif game.result == 'lose' %}stats_lose{% else %}stats_draw{% endif %}"
     >
       <h2 class="stats_result">{{ game.result }}</h2>
-      <p class="stats_stand">Result: {{ game.score }}</p>
+      <p class="stats_stand"><b data-i18n="result"></b> {{ game.score }}</p>
       {% if game.against|length > 8 %}
-      <p class="stats_against">Against: {{ game.against|slice:":10" }}...</p>
+      <p class="stats_against"><b data-i18n="against"></b> {{ game.against|slice:":10" }}...</p>
       {% else %}
-      <p class="stats_against">Against: {{ game.against }}</p>
+      <p class="stats_against"><b data-i18n="against"></b> {{ game.against }}</p>
       {% endif %}
     </div>
     {% endfor %}
@@ -28,22 +28,22 @@
     <div class="graphs">
       <div class="">
         <p class="graph_text">
-          <span class="graph_win">Wins</span>
-          <span class="grap_draw">Draws</span>
-          <span class="graph_lose">Loses</span>
+          <span class="graph_win"><b data-i18n="wins"></b></span>
+          <span class="grap_draw"><b data-i18n="draws"></b></span>
+          <span class="graph_lose"><b data-i18n="losses"></b></span>
         </p>
         <canvas id="donutGraph1"></canvas>
       </div>
       <div>
         <p class="graph_text">
-          <span class="graph_close">close wins</span>
-          <span class="grap_easy">easy wins</span>
+          <span class="graph_close"><b data-i18n="close_wins"></b></span>
+          <span class="grap_easy"><b data-i18n="easy_wins"></b></span>
         </p>
         <canvas id="donutGraph2"></canvas>
       </div>
     </div>
     <div class="graph_line">
-      <p class="graph_text line_text">Wins</p>
+      <p class="graph_text line_text"><b data-i18n="wins"></b></p>
       <canvas id="lineGraph" class="graph_line"></canvas>
     </div>
   </div>
@@ -119,5 +119,7 @@
       options: {}
   });
 </script>
+
+<script src="../../static/languages/translate.js"></script>
 
 {% endblock content %}

@@ -21,7 +21,7 @@
       class="profile_pong"
     />
     <div>
-      <h2 class="username">Username</h2>
+      <h2 class="username"><b data-i18n="username"></b></h2>
     </div>
   </div>
 </div>
@@ -35,4 +35,7 @@
   {% load static %}
   <script src="{% static 'js/pong_game.js' %}?v={{ timestamp }}"></script>
 </div>
+
+<script src="../../static/languages/translate.js"></script>
+
 {% endblock content %}

@@ -10,7 +10,8 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <title>login</title>
+    <title>Login</title>
+	
     <style>
       body {
         background-color: var(--body-color);
@@ -24,7 +25,7 @@
         {% csrf_token %}
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
+            ><b data-i18n="email"></b></label
           >
           <input
             type="text"
@@ -32,32 +33,32 @@
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             name="username"
-            placeholder="Enter Username"
+            placeholder=""
           />
           <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
+            <b data-i18n="privacy"></b>
           </div>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <label for="exampleInputPassword1" class="form-label"><b data-i18n="password"></b></label>
           <input
             type="password"
             name="password"
-            placeholder="Enter Password"
+            placeholder=""
             class="form-control"
             id="exampleInputPassword1"
           />
         </div>
         <div class="register">
           <div class="btn_42">
-            <a href="{% url 'register' %}" class="btn"> Login with 42 </a>
+            <a href="{% url 'register' %}" class="btn"><b data-i18n="login42"></b></a>
           </div>
           <div class="btn_42">
-            <a href="{% url 'register' %}" class="btn">Register</a>
+            <a href="{% url 'register' %}" class="btn"><b data-i18n="register"></b></a>
           </div>
         </div>
         <div class="btn_login">
-          <button type="submit" value="Login" class="btn">Submit</button>
+          <button type="submit" value="Login" class="btn"><b data-i18n="submit"></b></button>
         </div>
       </form>
     </div>
@@ -72,14 +73,16 @@
         {% endfor %}
         <div class="register">
           <div class="btn_42">
-            <a href="{% url 'login' %}" class="btn"> Already signed up </a>
+            <a href="{% url 'login' %}" class="btn"><b data-i18n="already"></b></a>
           </div>
         </div>
         <div class="btn_login">
-          <button type="submit" value="Login" class="btn">Submit</button>
+          <button type="submit" value="Login" class="btn"><b data-i18n="submit"></b></button>
         </div>
       </form>
     </div>
     {% endif %}
+	
+	<script src="../../static/languages/translate.js"></script>
   </body>
 </html>

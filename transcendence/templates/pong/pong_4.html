@@ -11,7 +11,7 @@
       class="profile_pong"
     />
     <div>
-      <h2 class="username">Username</h2>
+      <h2 class="username"><b data-i18n="username"></b></h2>
       <p>Wins: 3</p>
     </div>
   </div>
@@ -22,7 +22,7 @@
       class="profile_pong"
     />
     <div>
-      <h2 class="username">Username</h2>
+      <h2 class="username"><b data-i18n="username"></b></h2>
       <p>Wins: 3</p>
     </div>
   </div>
@@ -37,4 +37,7 @@
   {% load static %}
   <script src="{% static 'js/pong_4.js' %}?v={{ timestamp }}"></script>
 </div>
+
+<script src="../../static/languages/translate.js"></script>
+
 {% endblock content %}

@@ -10,7 +10,8 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <title>login</title>
+    <title>Login</title>
+	
     <style>
       body {
         background-color: var(--body-color);
@@ -22,7 +23,7 @@
       <form>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
+            ><b data-i18n="email"></b></label
           >
           <input
             type="email"
@@ -31,11 +32,11 @@
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
+			<b data-i18n="privacy"></b>
           </div>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <label for="exampleInputPassword1" class="form-label"><b data-i18n="password"></b></label>
           <input
             type="password"
             class="form-control"
@@ -44,14 +45,14 @@
         </div>
         <div class="register">
           <div class="btn_42">
-            <button type="submit" class="btn">Login with 42</button>
+            <button type="submit" class="btn"><b data-i18n="login42"></b></button>
           </div>
           <div class="btn_42">
-            <button type="submit" class="btn">Register</button>
+            <button type="submit" class="btn"><b data-i18n="register"></b></button>
           </div>
         </div>
         <div class="btn_login">
-          <button type="submit" class="btn">Submit</button>
+          <button type="submit" class="btn"><b data-i18n="submit"></b></button>
         </div>
       </form>
     </div>
@@ -65,5 +66,7 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+	
+	<script src="../../static/languages/translate.js"></script>
   </body>
 </html>

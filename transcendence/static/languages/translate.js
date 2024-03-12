@@ -1,9 +1,7 @@
-function updateContent(langData)
+async function fetchLanguageData(lang)
 {
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        element.textContent = langData[key];
-    });
+    const response = await fetch(`../../static/languages/${lang}.json`);
+    return response.json();
 }
 
 function setLanguagePreference(lang)
@@ -12,10 +10,12 @@ function setLanguagePreference(lang)
     location.reload();
 }
 
-async function fetchLanguageData(lang)
+function updateContent(langData)
 {
-    const response = await fetch(`../../static/languages/${lang}.json`);
-    return response.json();
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        element.textContent = langData[key];
+    });
 }
 
 async function changeLanguage(lang)
