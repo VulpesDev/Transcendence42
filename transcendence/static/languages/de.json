@@ -1,6 +1,6 @@
 {
 	"welcome_message": "Willkommen zu Transcendence",
-	"about": "Das hier ist eine Web-Anwendung, welche es dir ermöglicht, Spiele wie Pong und Schere-Stein-Papier zu spielen.",
+	"about": "Das hier ist eine Web-Anwendung, welche es dir ermöglicht, Pong mit deinen Freunden zu spielen.",
 	"games": "Spiele",
 	"select_gamemode": "Wähle einen Spielmodus: ",
 	"configure_profile": "Profil ändern",
@@ -25,6 +25,7 @@
 	"play_again": "erneut spielen",
 	"rules": "Regeln",
 	"result": "Ergebnis: ",
+	"results": "Ergebnisse",
 	"against": "Gegen: ",
 	"wins": "Siege",
 	"draws": "Unentschieden",

@@ -31,6 +31,7 @@
       </div>
 
       <form action="" method="POST" class="modal_form">
+		{% csrf_token %}
         <label for="name"><b data-i18n="name"></b></label>
         <input type="text" id="name" name="name" placeholder="Name" />
         <label for="email"><b data-i18n="email"></b></label>

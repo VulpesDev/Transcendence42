@@ -1,6 +1,6 @@
 {
 	"welcome_message": "Welcome to Transcendence",
-	"about": "This is a simple web application that allows you to play games such as Pong and Rock-Paper-Scissors.",
+	"about": "This is a simple web application that allows you to play Pong with your friends.",
 	"games": "Games",
 	"select_gamemode": "Select Gamemode: ",
 	"configure_profile": "Configure Profile",
@@ -25,6 +25,7 @@
 	"play_again": "play again",
 	"rules": "rules",
 	"result": "Result: ",
+	"results": "Results",
 	"against": "Against: ",
 	"wins": "Wins",
 	"draws": "Draws",
