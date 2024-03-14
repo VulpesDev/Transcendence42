@@ -6,6 +6,12 @@ const ctx = pong.getContext("2d");
 pong.width = 600;
 pong.height = 600;
 
+// Set last paddle contact, this is required to determine who actually scored
+let leftPlayerContact = false;
+let rightPlayerContact = false;
+let bottomPlayerContact = false;
+let topPlayerContact = false;
+
 // Set paddle properties
 const paddleWidth = 10;
 const bottomPaddleWidth = 100;
@@ -17,8 +23,8 @@ const paddleSpeed = 6;
 const ballRadius = 10;
 let ballX = pong.width / 2;
 let ballY = pong.height / 2;
-let ballSpeedX = 2;
-let ballSpeedY = 2;
+let ballSpeedX = 6;
+let ballSpeedY = 6;
 
 // Set initial paddle positions
 let leftPaddleY = pong.height / 2 - paddleHeight / 2;
@@ -152,6 +158,10 @@ function moveBall() {
     ballY <= leftPaddleY + paddleHeight
   ) {
     ballSpeedX = -ballSpeedX;
+	leftPlayerContact = true;
+    rightPlayerContact = false;
+	bottomPlayerContact = false;
+    topPlayerContact = false;
   }
 
   if (
@@ -160,6 +170,10 @@ function moveBall() {
     ballY <= rightPaddleY + paddleHeight
   ) {
     ballSpeedX = -ballSpeedX;
+	leftPlayerContact = false;
+    rightPlayerContact = true;
+	bottomPlayerContact = false;
+    topPlayerContact = false;
   }
 
   if (
@@ -168,6 +182,10 @@ function moveBall() {
     ballX <= bottomPaddleX + bottomPaddleWidth
   ) {
     ballSpeedY = -ballSpeedY;
+	leftPlayerContact = false;
+    rightPlayerContact = false;
+	bottomPlayerContact = true;
+    topPlayerContact = false;
   }
 
   if (
@@ -176,24 +194,46 @@ function moveBall() {
     ballX <= topPaddleX + bottomPaddleWidth
   ) {
     ballSpeedY = -ballSpeedY; // Reverse Y speed on collision
+	leftPlayerContact = false;
+    rightPlayerContact = false;
+	bottomPlayerContact = false;
+    topPlayerContact = true;
   }
 
   // Ball collision with left and right walls (scoring)
+  // Who touched the ball last? That player will be rewarded.
+  let scorer;
+  if (rightPlayerContact === true)
+	  scorer = "right";
+  else if (leftPlayerContact === true)
+	  scorer = "left";
+  else if (topPlayerContact === true)
+	  scorer = "top";
+  else if (bottomPlayerContact === true)
+	  scorer = "bottom";
+  else
+	  scorer = "noone";
+  
   if (ballX - ballRadius <= 0) {
-    // Right player scores when the ball misses the left paddle
-    increaseScore("right");
+    // Left paddle/player missed the ball
+	if (scorer !== "noone")
+		increaseScore(scorer);
     resetBall();
   } else if (ballX + ballRadius >= pong.width) {
-    // Left player scores when the ball misses the right paddle
-    increaseScore("left");
+    // Right paddle/player missed the ball
+	if (scorer !== "noone")
+		increaseScore(scorer);
     resetBall();
-  } else if (ballY - ballRadius <= 0) {
-    // Bottom player scores when the ball misses the top wall
-    increaseScore("bottom");
+  } 
+  if (ballY - ballRadius <= 0) {
+    // Top paddle/player missed the ball
+	if (scorer !== "noone")
+		increaseScore(scorer);
     resetBall();
   } else if (ballY + ballRadius >= pong.height) {
-    // Top player scores when the ball misses the bottom wall
-    increaseScore("top");
+    // Bottom paddle/player missed the ball
+	if (scorer !== "noone")
+		increaseScore(scorer);
     resetBall();
   }
 }
@@ -205,6 +245,12 @@ function resetBall() {
   //ballSpeedX = -ballSpeedX; // Reverse ball direction
   ballSpeedX = Math.random() > 0.5 ? 2 : -2;
   ballSpeedY = Math.random() > 0.5 ? 2 : -2; // Randomize ball's vertical speed
+  
+  // resetting last recorded paddle/player contact with ball
+  leftPlayerContact = false;
+  rightPlayerContact = false;
+  bottomPlayerContact = false;
+  topPlayerContact = false;
 }
 
 // Increase score and display winner
@@ -304,7 +350,8 @@ function draw() {
   if (
     leftPlayerScore >= 11 ||
     rightPlayerScore >= 11 ||
-    bottomPlayerScore >= 11
+    bottomPlayerScore >= 11 ||
+	topPlayerScore >= 11
   ) {
     endGame();
     return;
@@ -321,19 +368,74 @@ function endGame() {
   ctx.fillStyle = "white";
   ctx.font = "40px Poppins";
   ctx.textAlign = "center";
-  ctx.fillText("Game Over", pong.width / 2, pong.height / 2 - 40);
+  
+  var lang = localStorage.getItem('language');
+  if (lang === "de")
+  {
+      ctx.fillText('Spiel vorbei', pong.width / 2, pong.height / 2 - 40);
+  }
+  else if (lang === "it")
+  {
+      ctx.fillText('Fine del gioco', pong.width / 2, pong.height / 2 - 40);
+  }
+  else
+  {
+      ctx.fillText('Game Over', pong.width / 2, pong.height / 2 - 40);
+  }
 
   // Determine the winner
-  let winner = leftPlayerScore >= 11 ? "Player One" : "Player Two";
-  ctx.fillText(`Winner: ${winner}`, pong.width / 2, pong.height / 2);
+  let winner;
+  if (lang === "de")
+  {
+	  if (leftPlayerScore >= 11)
+          winner = "Spieler 1";
+	  else if (rightPlayerScore >= 11)
+		  winner = "Spieler 2";
+	  else if (topPlayerScore >= 11)
+		  winner = "Spieler 3";
+	  else if (bottomPlayerScore >= 11)
+		  winner = "Spieler 4";
+      ctx.fillText(`Sieger: ${winner}`, pong.width / 2, pong.height / 2);
+  }
+  else if (lang === "it")
+  {
+	  if (leftPlayerScore >= 11)
+          winner = "Giocatore 1";
+	  else if (rightPlayerScore >= 11)
+		  winner = "Giocatore 2";
+	  else if (topPlayerScore >= 11)
+		  winner = "Giocatore 3";
+	  else if (bottomPlayerScore >= 11)
+		  winner = "Giocatore 4";
+      ctx.fillText(`Vincitore: ${winner}`, pong.width / 2, pong.height / 2);
+  }
+  else
+  {
+	  if (leftPlayerScore >= 11)
+          winner = "Player 1";
+	  else if (rightPlayerScore >= 11)
+		  winner = "Player 2";
+	  else if (topPlayerScore >= 11)
+		  winner = "Player 3";
+	  else if (bottomPlayerScore >= 11)
+		  winner = "Player 4";
+      ctx.fillText(`Winner: ${winner}`, pong.width / 2, pong.height / 2);
+  }
 
   // Ask for replay or back to home
   ctx.font = "20px Poppins";
-  ctx.fillText(
-    'Press "R" to replay or "H" to go back to home',
-    pong.width / 2,
-    pong.height / 2 + 40
-  );
+  if (lang === "de")
+  {
+    ctx.fillText('Drücke "R" für eine weitere Runde oder "H" zum Zurückkehren', pong.width / 2, pong.height / 2 + 40);
+  }
+  else if (lang === "it")
+  {
+    ctx.fillText('Premere "R" per una nuova partita o "H" per ritonare', pong.width / 2, pong.height / 2 + 40);
+  }
+  else
+  {
+    ctx.fillText('Press "R" to replay or "H" to go back to home', pong.width / 2, pong.height / 2 + 40);
+  }
 
   // Add event listener for keydown events
   document.addEventListener("keydown", function (event) {

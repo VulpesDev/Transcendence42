@@ -7,7 +7,7 @@ class MyUserCreationForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
         
-# class UserForm(ModelForm):
-#     class Meta:
-#         model = User
-#         fields = ['avatar', 'name', 'username', 'email', 'bio', 'field_color', 'pong_history', 'rps_history']
+ #class UserForm(ModelForm):
+ #    class Meta:
+ #        model = User
+ #        fields = ['avatar', 'name', 'username', 'email', 'bio', 'field_color', 'pong_history', 'rps_history']

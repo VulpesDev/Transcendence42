@@ -15,8 +15,8 @@ const paddleSpeed = 6;
 const ballRadius = 10;
 let ballX = pong.width / 2;
 let ballY = pong.height / 2;
-let ballSpeedX = 3;
-let ballSpeedY = 3;
+let ballSpeedX = 6;
+let ballSpeedY = 6;
 
 // Set initial paddle positions
 let leftPaddleY = pong.height / 2 - paddleHeight / 2;
@@ -236,19 +236,52 @@ function endGame() {
   ctx.fillStyle = "white";
   ctx.font = "40px Poppins";
   ctx.textAlign = "center";
-  ctx.fillText("Game Over", pong.width / 2, pong.height / 2 - 40);
+  
+  var lang = localStorage.getItem('language');
+  if (lang === "de")
+  {
+      ctx.fillText('Spiel vorbei', pong.width / 2, pong.height / 2 - 40);
+  }
+  else if (lang === "it")
+  {
+      ctx.fillText('Fine del gioco', pong.width / 2, pong.height / 2 - 40);
+  }
+  else
+  {
+      ctx.fillText('Game Over', pong.width / 2, pong.height / 2 - 40);
+  }
 
   // Determine the winner
-  let winner = leftPlayerScore >= 11 ? "Player One" : "Player Two";
-  ctx.fillText(`Winner: ${winner}`, pong.width / 2, pong.height / 2);
+  if (lang === "de")
+  {
+	  let winner = leftPlayerScore >= 11 ? "Spieler 1" : "Spieler 2";
+      ctx.fillText(`Sieger: ${winner}`, pong.width / 2, pong.height / 2);
+  }
+  else if (lang === "it")
+  {
+	  let winner = leftPlayerScore >= 11 ? "Giocatore 1" : "Giocatore 2";
+      ctx.fillText(`Vincitore: ${winner}`, pong.width / 2, pong.height / 2);
+  }
+  else
+  {
+	  let winner = leftPlayerScore >= 11 ? "Player 1" : "Player 2";
+      ctx.fillText(`Winner: ${winner}`, pong.width / 2, pong.height / 2);
+  }
 
   // Ask for replay or back to home
   ctx.font = "20px Poppins";
-  ctx.fillText(
-    'Press "R" to replay or "H" to go back to home',
-    pong.width / 2,
-    pong.height / 2 + 40
-  );
+  if (lang === "de")
+  {
+    ctx.fillText('Drücke "R" für eine weitere Runde oder "H" zum Zurückkehren', pong.width / 2, pong.height / 2 + 40);
+  }
+  else if (lang === "it")
+  {
+    ctx.fillText('Premere "R" per una nuova partita o "H" per ritonare', pong.width / 2, pong.height / 2 + 40);
+  }
+  else
+  {
+    ctx.fillText('Press "R" to replay or "H" to go back to home', pong.width / 2, pong.height / 2 + 40);
+  }
 
   // Add event listener for keydown events
   document.addEventListener("keydown", function (event) {
