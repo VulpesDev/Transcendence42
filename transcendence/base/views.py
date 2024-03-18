@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from .forms import MyUserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from .models import PongGame, RPSGame, User
+from .models import PongGame, TTTGame, User
 
 users = [
     {"id": 1, "username": "user1", "email": "user1@example.com", "password": "user1","bio": "I am a software developer", "field_color": "blue"},
@@ -57,12 +57,12 @@ def games(request):
 	return render(request, "games/games.html")
 
 @login_required(login_url='login')
-def rps(request):
-	return render(request, "rps/rps.html")
+def ttt(request):
+	return render(request, "ttt/ttt.html")
 
 @login_required(login_url='login')
-def rps_2(request):
-	return render(request, "rps/rps_2.html")
+def ttt_ai(request):
+	return render(request, "ttt/ttt_ai.html")
 
 @login_required(login_url='login')
 def stats(request):

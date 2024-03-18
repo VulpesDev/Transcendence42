@@ -163,11 +163,13 @@ img {
 }
 
 .nav__menu {
-  margin-bottom: 4rem;
+ /* margin-bottom: 4rem;	*/
+  margin-top: 1rem;
   margin: 0 auto;
   width: 30%;
   position: fixed;
-  bottom: 4rem;
+ /* bottom: 4rem;			*/
+  top: 1rem;
   background-color: white;
   border-radius: 4rem;
   padding: 2rem 3rem;
@@ -351,7 +353,7 @@ img {
 }
 
 .games_2 {
-  background-image: url("../assets/img/rps.png");
+  background-image: url("../assets/img/ttt.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -400,6 +402,30 @@ img {
 
 .pong_player:hover {
   background-color: var(--body-color);
+}
+
+/*============= TICTACTOE ============*/
+
+.ttt {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+#ttt_game {
+  border: 0.8rem solid white;
+  border-radius: 1rem;
+}
+
+.ttt_field {
+  background-image: url("../assets/ttt_images/ttt_grid.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /*=============== PONG ===============*/

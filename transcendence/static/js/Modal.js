@@ -1,6 +1,6 @@
 var modal = document.getElementById("myModal");
 var modalPong = document.getElementById("myModalPong");
-var modalRPS = document.getElementById("myModalRPS");
+var modalTTT = document.getElementById("myModalTTT");
 
 function openModal(modalElement) {
   modalElement.style.display = "block";
@@ -12,7 +12,7 @@ function closeModal(modalElement) {
 
 var modalCloseSpan = modal.querySelector(".close");
 var modalPongCloseSpan = modalPong.querySelector(".close");
-var modalRPSCloseSpan = modalRPS.querySelector(".close");
+var modalTTTCloseSpan = modalTTT.querySelector(".close");
 
 document
   .getElementById("modalButton")
@@ -29,10 +29,10 @@ document
   });
 
 document
-  .getElementById("modalRPSButton")
+  .getElementById("modalTTTButton")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    openModal(modalRPS);
+    openModal(modalTTT);
   });
 
 modalCloseSpan.addEventListener("click", function () {
@@ -43,21 +43,21 @@ modalPongCloseSpan.addEventListener("click", function () {
   closeModal(modalPong);
 });
 
-modalRPSCloseSpan.addEventListener("click", function () {
-  closeModal(modalRPS);
+modalTTTCloseSpan.addEventListener("click", function () {
+  closeModal(modalTTT);
 });
 
 window.addEventListener("click", function (event) {
   if (
     event.target === modal ||
     event.target === modalPong ||
-    event.target === modalRPS ||
+    event.target === modalTTT ||
     event.target === modal.querySelector(".modal-content") ||
     event.target === modalPong.querySelector(".modal-content") ||
-    event.target === modalRPS.querySelector(".modal-content")
+    event.target === modalTTT.querySelector(".modal-content")
   ) {
     closeModal(modal);
     closeModal(modalPong);
-    closeModal(modalRPS);
+    closeModal(modalTTT);
   }
 });

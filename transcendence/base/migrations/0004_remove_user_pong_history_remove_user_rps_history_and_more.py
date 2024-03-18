@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RemoveField(
             model_name='user',
-            name='rps_history',
+            name='ttt_history',
         ),
         migrations.AddField(
             model_name='ponggame',
@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
         ),
         migrations.AddField(
-            model_name='rpsgame',
+            model_name='tttgame',
             name='name',
             field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
         ),

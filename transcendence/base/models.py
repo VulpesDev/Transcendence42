@@ -10,7 +10,7 @@ class User(AbstractUser):
 
 	REQUIRED_FIELDS = []
 
-class RPSGame(models.Model):
+class TTTGame(models.Model):
 	name = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 	result = models.CharField(max_length=20)
 	score = models.CharField(max_length=20)
