@@ -15,29 +15,32 @@ var fields = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 // occuring more than once on fields.
 var rendered = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-// Setting up array for holding images.
-var base_image = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-
 // Keeping track of whose turn it is.
 // 1 = player 1    |    2 = player 2
-var turn_tracker;
+var turn_tracker = 0;
 
 // Keeping track of when to end the game.
 // 1 = player 1    |    2 = player 2
-var ttt_winner;
+var ttt_winner = 0;
 
 // Define variables for mouse input.
 // 0 = nothing pressed.
 // 1 = left mouse button.
 // 2 = right mouse button.
-
-
-var mouseDown = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+var mouseDown = [0, 0, 0];
 var mouseDownCount = 0;
+
+// Setting up symbols for drawing
+var circle_image = new Image();
+var cross_image = new Image();
+circle_image.src = '/static/assets/ttt_images/ttt_circle.png';
+cross_image.src = '/static/assets/ttt_images/ttt_cross.png';
 
 function switchTurn()
 {
-	if (turn_tracker === 1)
+	if (ttt_winner > 0)
+		return;
+	else if (turn_tracker === 1)
 		turn_tracker = 2;
 	else if (turn_tracker === 2)
 		turn_tracker = 1;
@@ -54,13 +57,7 @@ function drawSymbol()
 	for (let x = 0; x < 9; x++)
 	{
 		if (fields[x] > 0 && rendered[x] === 0)
-		{
-			base_image[x] = new Image();
-			if (fields[x] === 1)
-				base_image[x].src = '/static/assets/ttt_images/ttt_circle.png';
-			else if (fields[x] === 2)
-				base_image[x].src = '/static/assets/ttt_images/ttt_cross.png';
-			
+		{	
 			if (x === 0)
 			{
 				_x = 25; _y = 25;
@@ -97,18 +94,21 @@ function drawSymbol()
 			{
 				_x = 445; _y = 445;
 			}
-			context.drawImage(base_image[x], _x, _y);
+			if (fields[x] === 1)
+				context.drawImage(circle_image, _x, _y);
+			else if (fields[x] === 2)
+				context.drawImage(cross_image, _x, _y);
 			rendered[x] = 1;
 		}
 	}
 	if (fields[0] && fields[1] && fields[2] && fields[3] && fields[4]
 		&& fields[5] && fields[6] && fields[7] && fields[8])
 	{
-		turn_tracker = 0;
+		return;
 	}
 	else if (checkWinCondition() > 0)
 	{
-		turn_tracker = 0;
+		return;
 	}
 	else
 		switchTurn();
@@ -208,27 +208,20 @@ function checkMousePos(canvas, evt)
 	};
 }
 
-document.body.onmousedown = function(event) { 
-	if (turn_tracker) {
+document.body.onmousedown = function(event){
+	if (turn_tracker > 0) {
 		++mouseDown[event.button];
 		++mouseDownCount;
 		
-		if (mouseDownCount && turn_tracker === 1)
+		if (mouseDownCount && turn_tracker > 0 && mouseDown[0])
 		{
-			for (var i = 0; i < mouseDown.length; ++i)
+			// check coordinates here
+			var pos = checkMousePos(canvas, event);
+			if (pos.x < canvas.width && pos.y < canvas.height
+				&& pos.x > 0 && pos.y > 0)
 			{
-				// only during player turn
-				if (mouseDown[i] && turn_tracker === 1)
-				{
-					// check coordinates here
-					var pos = checkMousePos(canvas, event);
-					if (pos.x < canvas.width && pos.y < canvas.height
-						&& pos.x > 0 && pos.y > 0)
-					{
-						// third argument is player
-						takeField(pos.x, pos.y, 1);
-					}
-				}
+				// third argument is player
+				takeField(pos.x, pos.y, turn_tracker);
 			}
 		}
 	}
@@ -299,17 +292,15 @@ function checkWinCondition()
 function resetGame()
 {
 	context.clearRect(0, 0, canvas.width, canvas.height);
-	for (let x = 0; x < 9; x++)
-		base_image[x].src = 0;
-	base_image = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-	mouseDown = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+	mouseDown = [0, 0, 0];
 	mouseDownCount = 0;
+	var check = ttt_winner;
+	ttt_winner = 0;
 	// Loser gets the first turn
-	if (ttt_winner === 1)
+	if (check === 1)
 		turn_tracker = 2;
 	else 
 		turn_tracker = 1;
-	ttt_winner = 0;
 	fields = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 	rendered = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 	animationId = requestAnimationFrame(draw);
@@ -733,21 +724,16 @@ function draw()
 	if (turn_tracker === 2)
 		AIopponent();
 	ttt_winner = checkWinCondition();
-	if (ttt_winner > 0)
+	if (ttt_winner > 0 & turn_tracker > 0)
 	{
 		turn_tracker = 0;
 		endGame();
 		return;
 	}
-	animationId = requestAnimationFrame(draw);
+	else
+		animationId = requestAnimationFrame(draw);
 }
 
 // Call the draw function to start the game loop
-ttt_winner = 0;
-base_image = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-mouseDown = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-mouseDownCount = 0;
-fields = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-rendered = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 turn_tracker = 1;
 let animationId = requestAnimationFrame(draw);
