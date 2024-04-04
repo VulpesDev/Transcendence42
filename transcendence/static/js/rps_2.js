@@ -1,8 +1,3 @@
-// Prevent animation on load
-setTimeout(() => {
-  document.body.classList.remove("preload");
-}, 500);
-
 // DOM
 const btnRules = document.querySelector(".rules-btn");
 const btnClose = document.querySelector(".close-btn");
@@ -36,12 +31,21 @@ const scoreNumber = document.querySelector(".score__number");
 let score = 0;
 
 // Game Logic
-choiceButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const choiceName = button.dataset.choice;
+document.addEventListener("keydown", function (event) {
+  if (
+    event.key === "ArrowUp" ||
+    event.key === "ArrowDown" ||
+    event.key === "ArrowLeft"
+  ) {
+    const choiceName =
+      event.key === "ArrowUp"
+        ? "rock"
+        : event.key === "ArrowDown"
+        ? "paper"
+        : "scissors";
     const choice = CHOICES.find((choice) => choice.name === choiceName);
     choose(choice);
-  });
+  }
 });
 
 function choose(choice) {

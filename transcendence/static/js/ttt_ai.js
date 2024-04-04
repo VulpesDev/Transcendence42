@@ -388,10 +388,12 @@ function endGame()
 		{
 			window.location.reload();
 			resetGame();
+			ttt_ai_btn.click();
 		}
 		else if (event.key === "h")
 		{
 			// Go back to home
+			ttt_ai_btn.click();
 			window.location.href = "/games";
 		}
 	});
@@ -727,6 +729,26 @@ function draw()
 	if (ttt_winner > 0 & turn_tracker > 0)
 	{
 		turn_tracker = 0;
+		
+		var player_score = 0;
+		var ai_score = 0;
+		let win;
+		if (ttt_winner === 1){
+			win = "win";
+			player_score = 1;
+		}
+		else if (ttt_winner === 2){
+			win = "lose";
+			ai_score = 1;
+		}
+		else if (ttt_winner === 3){
+			win = "draw";
+		}
+		document.getElementById("winner").value = win;
+		document.getElementById("result").value =
+		player_score + " : " + ai_score;
+		document.getElementById("against").value = "AI";
+		ttt_ai_btn.click();
 		endGame();
 		return;
 	}

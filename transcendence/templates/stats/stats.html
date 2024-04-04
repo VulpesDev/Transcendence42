@@ -3,6 +3,14 @@
   <h1 class="heading"><b data-i18n="stats"></b></h1>
 </div>
 <div class="stats">
+  <div class="slider_div">
+    Pong TTT
+    <br />
+    <label class="switch">
+      <input type="checkbox" />
+      <span class="slider round"></span>
+    </label>
+  </div>
   <div class="stats_left">
     <div class="stats_heading">
       <h2><b data-i18n="history"></b></h2>
@@ -50,73 +58,53 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-      // Data from Django views
-      var gameHistory = {{ game_history|safe }};
+    const slider = document.querySelector('.switch input[type="checkbox"]');
 
-      // Calculate wins, losses, and draws
-      var wins = gameHistory.filter(game => game.result === 'win').length;
-      var losses = gameHistory.filter(game => game.result === 'lose').length;
-      var draws = gameHistory.filter(game => game.result === 'draw').length;
+    var p_wins = {{ pong_win }};
+    var p_draws = {{ pong_draw }};
+    var p_losses = {{ pong_lose }};
 
-      // Calculate closeness of wins
-      var winCloseness = gameHistory.map(game => parseFloat(game.score.split(':')[0]) - parseFloat(game.score.split(':')[1]));
-      var avgWinCloseness = winCloseness.reduce((acc, val) => acc + val, 0) / winCloseness.length;
+    var r_wins = {{ rps_win }};
+    var r_draws = {{ rps_draw }};
+    var r_losses = {{ rps_lose }};
 
-      // Calculate player's development over time
-      function reverseArray(array) {
-          return array.slice().reverse();
-      }
-      var winCountByIndex = Array(gameHistory.length).fill(0);
+    var wins = p_wins;
+    var draws = p_draws;
+    var losses = p_losses;
 
-      //winCountByIndex = reverseArray(winCountByIndex);
-      gameHistory.forEach((game, index) => {
-        if (game.result === 'win') {
-            winCountByIndex[index] = (index === 0 ? 0 : winCountByIndex[index - 1]) + 1;
-        } else if (game.result === 'lose') {
-            winCountByIndex[index] = (index === 0 ? 0 : winCountByIndex[index - 1]) - 1;
-        } else {
-            winCountByIndex[index] = index === 0 ? 0 : winCountByIndex[index - 1];
-        }
-    });
-
-
-      // Donut graph for wins, losses, draws
-      new Chart(document.getElementById('donutGraph1'), {
+    // Check the initial state
+    let currentGame = slider.checked ? 'rps' : 'pong';
+    const chart = new Chart(document.getElementById('donutGraph1'), {
         type: 'doughnut',
         data: {
-      	datasets: [{
-      	  data: [wins, losses, draws],
-      	  backgroundColor: ['#277027', '#962b2b', '#414141']
-      	}]
+        datasets: [{
+          data: [wins, losses, draws],
+          backgroundColor: ['#277027', '#962b2b', '#414141']
+        }]
         },
         options: {}
       });
+    slider.addEventListener('change', function() {
+      chart.destroy();
+    // Update currentGame based on slider state
+    currentGame = slider.checked ? 'rps' : 'pong';
 
-      // Donut graph for closeness of wins
-      new Chart(document.getElementById('donutGraph2'), {
-        type: 'doughnut',
-        data: {
-      	datasets: [{
-      	  data: [avgWinCloseness, 10 - avgWinCloseness],
-      	  backgroundColor: ['#36a2eb', '#e7e7e7']
-      	}]
-        },
-        options: {}
-      });
-
-      // Line graph for player's development
-      new Chart(document.getElementById('lineGraph'), {
-      type: 'line',
+    // Update wins, draws, and losses based on currentGame
+    wins = currentGame === 'pong' ? p_wins : r_wins;
+    draws = currentGame === 'pong' ?  p_draws :  r_draws;
+    losses = currentGame === 'pong' ?  p_losses :  r_losses;
+    console.log(wins, draws, losses);
+          // Donut graph for wins, losses, draws
+    const chart = new Chart(document.getElementById('donutGraph1'), {
+      type: 'doughnut',
       data: {
-          labels: gameHistory.map((game, index) => index + 1),
-          datasets: [{
-              label: 'Wins Over Time',
-              data: winCountByIndex,
-              borderColor: '#36a2eb',
-              fill: false
-          }]
+      datasets: [{
+        data: [wins, losses, draws],
+        backgroundColor: ['#277027', '#962b2b', '#414141']
+      }]
       },
       options: {}
+    });
   });
 </script>
 

@@ -279,6 +279,13 @@ function draw() {
 
   // Check if one player reached 11 points
   if (leftPlayerScore >= 11 || rightPlayerScore >= 11) {
+	let win = leftPlayerScore >= 2 ? "win" : "lose";
+    document.getElementById("winner").value = win;
+    document.getElementById("result").value =
+      leftPlayerScore + " : " + rightPlayerScore;
+    document.getElementById("against").value = "AI";
+
+    pong_ai_btn.click();
     endGame();
     return;
   }
@@ -349,6 +356,7 @@ function endGame() {
       resetGame();
     } else if (event.key === "h") {
       // Go back to home
+	  pong_ai_btn.click();
       window.location.href = "/games";
     }
   });
@@ -360,6 +368,7 @@ function resetGame() {
   rightPlayerScore = 0;
   isPaused = false;
   animationId = requestAnimationFrame(draw);
+  pong_ai_btn.click();
 }
 
 // Call the draw function to start the game loop

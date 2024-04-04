@@ -62,15 +62,10 @@
 </div>
 <script>
      var users_data = {{ users_data | safe }};
-     document.getElementById("saveField").value = users_data[2].field_color;
-     console.log("Field Color:", users_data[2].field_color);
      document.querySelectorAll(".profile_btn_field").forEach((btn) => {
        btn.addEventListener("click", (e) => {
          const fieldValue = e.currentTarget.getAttribute("data-field");
          document.getElementById("saveField").value = fieldValue;
-
-      // Update field color locally
-      users_data[2].field_color = fieldValue;
 
       // Update UI to reflect the change
       document.querySelectorAll(".profile_btn_field").forEach((btn) => {
