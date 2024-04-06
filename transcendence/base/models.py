@@ -13,7 +13,6 @@ class User(AbstractUser):
 class TTTGame(models.Model):
 	name = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 	result = models.CharField(max_length=20)
-	score = models.CharField(max_length=20)
 	against = models.CharField(max_length=20)
 
 class PongGame(models.Model):
@@ -21,5 +20,9 @@ class PongGame(models.Model):
 	result = models.CharField(max_length=20)
 	score = models.CharField(max_length=20)
 	against = models.CharField(max_length=20)
-
 	
+# class RPSGame(models.Model):
+# 	name = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+# 	result = models.CharField(max_length=20)
+# 	score = models.CharField(max_length=20)
+# 	against = models.CharField(max_length=20)

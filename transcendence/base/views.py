@@ -91,10 +91,10 @@ def stats(request):
         pong_history = PongGame.objects.filter(name=logged_in_user)
         ttt_history = TTTGame.objects.filter(name=logged_in_user)
         print(pong_history)
+        print(ttt_history);
         pong_win = pong_history.filter(result='win').count()
         pong_draw = pong_history.filter(result='draw').count()
         pong_lose = pong_history.filter(result='lose').count()
-        print(ttt_history);
         ttt_win = ttt_history.filter(result='win').count()
         ttt_draw = ttt_history.filter(result='draw').count()
         ttt_lose = ttt_history.filter(result='lose').count()
