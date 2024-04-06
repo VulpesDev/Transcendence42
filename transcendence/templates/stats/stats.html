@@ -15,16 +15,20 @@
     <div class="stats_heading">
       <h2><b data-i18n="history"></b></h2>
     </div>
-    {% for game in game_history %}
+    {% for game in pong_history %}
     <div
       class="stats_game {% if game.result == 'win' %}stats_win{% elif game.result == 'lose' %}stats_lose{% else %}stats_draw{% endif %}"
     >
       <h2 class="stats_result">{{ game.result }}</h2>
       <p class="stats_stand"><b data-i18n="result"></b> {{ game.score }}</p>
       {% if game.against|length > 8 %}
-      <p class="stats_against"><b data-i18n="against"></b> {{ game.against|slice:":10" }}...</p>
+      <p class="stats_against">
+        <b data-i18n="against"></b> {{ game.against|slice:":10" }}...
+      </p>
       {% else %}
-      <p class="stats_against"><b data-i18n="against"></b> {{ game.against }}</p>
+      <p class="stats_against">
+        <b data-i18n="against"></b> {{ game.against }}
+      </p>
       {% endif %}
     </div>
     {% endfor %}
@@ -59,10 +63,11 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const slider = document.querySelector('.switch input[type="checkbox"]');
-
     var p_wins = {{ pong_win }};
     var p_draws = {{ pong_draw }};
     var p_losses = {{ pong_lose }};
+
+    console.log(p_draws, p_losses, p_wins);
 
     var r_wins = {{ rps_win }};
     var r_draws = {{ rps_draw }};

@@ -98,6 +98,7 @@ def stats(request):
         ttt_win = ttt_history.filter(result='win').count()
         ttt_draw = ttt_history.filter(result='draw').count()
         ttt_lose = ttt_history.filter(result='lose').count()
+        print(pong_win, pong_draw, pong_lose, ttt_win, ttt_draw, ttt_lose)
         context = {'pong_history': pong_history, 'pong_win': pong_win, 'pong_draw': pong_draw, 'pong_lose': pong_lose, 'ttt_history': ttt_history, 'ttt_win': ttt_win, 'ttt_draw': ttt_draw, 'ttt_lose': ttt_lose}
     return render(request, "stats/stats.html", context)
 
