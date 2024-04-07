@@ -34,5 +34,8 @@
 	"easy_wins": "Klare Siege",
 	"stats": "Statistiken",
 	"history": "Vermerke",
-	"logout": "Abmelden"
+	"logout": "Abmelden",
+	"win": "Sieg",
+	"draw": "Unentschieden",
+	"loss": "Niederlage"
 }

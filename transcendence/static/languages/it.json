@@ -35,4 +35,7 @@
 	"stats": "Statistiche",
 	"history": "Storia",
 	"logout": "Disconnettersi"
+	"win": "Vittoria",
+	"draw": "Disegno",
+	"loss": "Sconfitta"
 }

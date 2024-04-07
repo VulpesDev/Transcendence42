@@ -387,8 +387,8 @@ function endGame()
 		if (event.key === "r")
 		{
 			window.location.reload();
-			resetGame();
 			ttt_ai_btn.click();
+			resetGame();
 		}
 		else if (event.key === "h")
 		{
@@ -748,7 +748,7 @@ function draw()
 		document.getElementById("result").value =
 		player_score + " : " + ai_score;
 		document.getElementById("against").value = "AI";
-		ttt_ai_btn.click();
+		//ttt_ai_btn.click();
 		endGame();
 		return;
 	}

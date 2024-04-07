@@ -35,4 +35,7 @@
 	"stats": "Stats",
 	"history": "History",
 	"logout": "Logout"
+	"win": "win",
+	"draw": "draw",
+	"loss": "loss"
 }
