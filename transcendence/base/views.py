@@ -120,7 +120,33 @@ def profile(request):
 
 @login_required(login_url='login')
 def edit_profile(request):
-	return render(request, "edit_profile/edit_profile.html")
+    if request.method == 'POST':
+        if request.POST.get('email') != '':
+            email = request.POST.get('email')
+        if request.POST.get('avatar') != '':
+            avatar = request.POST.get('avatar')
+        if request.POST.get('bio') != '':
+            bio = request.POST.get('bio')
+        user = User.objects.get(username=request.user)
+        user.email = email
+        user.avatar = avatar
+        user.bio = bio
+        user.save()
+        print('Profile edited')
+    # Fetch user's data
+    user = User.objects.get(username=request.user)
+    
+    # Pass user's data to the template context
+    print(user.email, 'user email', user.username, 'user username', user.bio, 'user bio')
+    print(User.objects.all(), 'all users', User.objects.get(username = request.user), 'current user')
+    # context = {
+    #     'user': user_data,
+    #     'email': user_data.email,
+    #     # 'avatar': user_data.profile.avatar,
+    #     # 'bio': user_data.profile.bio,
+    # }
+    # print (context)
+    return render(request, "edit_profile/edit_profile.html")
 
 def loginPage(request):
     page = 'login'

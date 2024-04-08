@@ -1,0 +1,38 @@
+{% extends 'main.html' %} {% block content %}
+<div>
+  <div class="profile_modal">
+    <div class="">
+      <img
+        class="modal_img"
+        src="../static/assets/img/profile.jpeg"
+        alt="user image"
+      />
+    </div>
+    <div class="modal_text">
+      <p>Username:</p>
+      <p>email: {{user.profile.email}}</p>
+    </div>
+  </div>
+
+  <form action="" method="POST" class="modal_form">
+    {% csrf_token %}
+    <label for="email"><b data-i18n="email"></b></label>
+    <input type="email" id="email" name="email" placeholder="Email" required />
+    <label for="email"><b data-i18n="img_url"></b></label>
+    <input
+      type="text"
+      id="avatar"
+      name="avatar"
+      placeholder="Image URL"
+      required
+    />
+    <label for="bio"><b>Bio</b></label>
+    <input type="text" id="bio" name="bio" placeholder="Bio" required />
+    <br />
+    <input type="submit" value="Submit" class="submit_button" />
+  </form>
+</div>
+
+<script src="../../static/languages/translate.js"></script>
+
+{% endblock content %}

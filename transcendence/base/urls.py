@@ -15,5 +15,5 @@ urlpatterns = [
     path('ttt_ai/', views.ttt_ai, name="ttt_ai"),
     path('profile/', views.profile, name="ttt"),
     path('stats/', views.stats, name="ttt"),
-    path('editprofile/', views.edit_profile, name="ttt"),
+    path('edit_profile/', views.edit_profile, name="ttt"),
 ]
