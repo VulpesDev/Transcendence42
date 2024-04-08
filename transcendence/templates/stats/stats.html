@@ -15,7 +15,7 @@
     <div class="stats_heading">
       <h2><b data-i18n="history"></b></h2>
     </div>
-    {% for game in pong_history %}
+    {% for game in pong_history|slice:"-8:" %}
     <div
       class="stats_game {% if game.result == 'win' %}stats_win{% elif game.result == 'lose' %}stats_lose{% else %}stats_draw{% endif %}"
     >

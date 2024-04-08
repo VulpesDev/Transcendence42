@@ -18,9 +18,46 @@
         />
         {% endif %}
       </div>
+
       <div class="profile_info">
         <h2 class="stats_heading">{{ user.username }}</h2>
         <p>{{ user.email }}</p>
+      </div>
+      <a href="" id="modalButton" class="dropdown_text"
+        ><b data-i18n="configure_profile"></b
+      ></a>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1 class="modal_header"><b data-i18n="edit_profile"></b></h1>
+        <div class="profile_modal">
+          <div class="">
+            <img
+              class="modal_img"
+              src="../static/assets/img/profile.jpeg"
+              alt="user image"
+            />
+          </div>
+          <div class="modal_text">
+            <p>Username: ekayatz</p>
+            <p>email: ekayatz@student.42berlin.de</p>
+          </div>
+        </div>
+
+        <form action="" method="POST" class="modal_form">
+          {% csrf_token %}
+          <label for="name"><b data-i18n="name"></b></label>
+          <input type="text" id="name" name="name" placeholder="Name" />
+          <label for="email"><b data-i18n="email"></b></label>
+          <input type="text" id="email" name="email" placeholder="Email" />
+          <label for="email"><b data-i18n="img_url"></b></label>
+          <input type="text" id="email" name="email" placeholder="Image URL" />
+          <label for="bio"><b data-i18n="img_url"></b></label>
+          <input type="text" id="email" name="email" placeholder="Bio" />
+          <br />
+          <input type="submit" value="OK" class="submit_button" />
+        </form>
       </div>
     </div>
     <div class="profile_right">
