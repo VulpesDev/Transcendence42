@@ -7,9 +7,12 @@
   <div class="profile">
     <img class="profile_pong" src="../static/assets/img/profile.jpeg" alt="" />
     <div class="dropdown-content">
-      <a href="" id="modalButton" class="dropdown_text"><b data-i18n="configure_profile"></b></a>
+      <a href="" id="modalButton" class="dropdown_text"><b data-i18n="configure_profile">
+	  </b></a>
       <br />
-      <a href="{% url 'logout' %}" class="dropdown_text"><b data-i18n="logout"></b></a>
+      <a href="{% url 'logout' %}" class="dropdown_text"
+        ><b data-i18n="logout"></b
+      ></a>
     </div>
   </div>
   <div id="myModal" class="modal">
@@ -31,13 +34,15 @@
       </div>
 
       <form action="" method="POST" class="modal_form">
-		{% csrf_token %}
+        {% csrf_token %}
         <label for="name"><b data-i18n="name"></b></label>
         <input type="text" id="name" name="name" placeholder="Name" />
         <label for="email"><b data-i18n="email"></b></label>
         <input type="text" id="email" name="email" placeholder="Email" />
         <label for="email"><b data-i18n="img_url"></b></label>
         <input type="text" id="email" name="email" placeholder="Image URL" />
+        <label for="bio"><b data-i18n="img_url"></b></label>
+        <input type="text" id="email" name="email" placeholder="Bio" />
         <br />
         <input type="submit" value="OK" class="submit_button" />
       </form>

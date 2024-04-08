@@ -221,6 +221,13 @@ function draw() {
 
   // Check if one player reached 11 points
   if (leftPlayerScore >= 11 || rightPlayerScore >= 11) {
+    let win = leftPlayerScore >= 11 ? "win" : "lose";
+    document.getElementById("winner").value = win;
+    document.getElementBwyId("result").value =
+      leftPlayerScore + " : " + rightPlayerScore;
+    document.getElementById("against").value = "2 Play";
+
+    pong_ai_btn.click();
     endGame();
     return;
   }
@@ -236,51 +243,48 @@ function endGame() {
   ctx.fillStyle = "white";
   ctx.font = "40px Poppins";
   ctx.textAlign = "center";
-  
-  var lang = localStorage.getItem('language');
-  if (lang === "de")
-  {
-      ctx.fillText('Spiel vorbei', pong.width / 2, pong.height / 2 - 40);
-  }
-  else if (lang === "it")
-  {
-      ctx.fillText('Fine del gioco', pong.width / 2, pong.height / 2 - 40);
-  }
-  else
-  {
-      ctx.fillText('Game Over', pong.width / 2, pong.height / 2 - 40);
+
+  var lang = localStorage.getItem("language");
+  if (lang === "de") {
+    ctx.fillText("Spiel vorbei", pong.width / 2, pong.height / 2 - 40);
+  } else if (lang === "it") {
+    ctx.fillText("Fine del gioco", pong.width / 2, pong.height / 2 - 40);
+  } else {
+    ctx.fillText("Game Over", pong.width / 2, pong.height / 2 - 40);
   }
 
   // Determine the winner
-  if (lang === "de")
-  {
-	  let winner = leftPlayerScore >= 11 ? "Spieler 1" : "Spieler 2";
-      ctx.fillText(`Sieger: ${winner}`, pong.width / 2, pong.height / 2);
-  }
-  else if (lang === "it")
-  {
-	  let winner = leftPlayerScore >= 11 ? "Giocatore 1" : "Giocatore 2";
-      ctx.fillText(`Vincitore: ${winner}`, pong.width / 2, pong.height / 2);
-  }
-  else
-  {
-	  let winner = leftPlayerScore >= 11 ? "Player 1" : "Player 2";
-      ctx.fillText(`Winner: ${winner}`, pong.width / 2, pong.height / 2);
+  if (lang === "de") {
+    let winner = leftPlayerScore >= 11 ? "Spieler 1" : "Spieler 2";
+    ctx.fillText(`Sieger: ${winner}`, pong.width / 2, pong.height / 2);
+  } else if (lang === "it") {
+    let winner = leftPlayerScore >= 11 ? "Giocatore 1" : "Giocatore 2";
+    ctx.fillText(`Vincitore: ${winner}`, pong.width / 2, pong.height / 2);
+  } else {
+    let winner = leftPlayerScore >= 11 ? "Player 1" : "Player 2";
+    ctx.fillText(`Winner: ${winner}`, pong.width / 2, pong.height / 2);
   }
 
   // Ask for replay or back to home
   ctx.font = "20px Poppins";
-  if (lang === "de")
-  {
-    ctx.fillText('Drücke "R" für eine weitere Runde oder "H" zum Zurückkehren', pong.width / 2, pong.height / 2 + 40);
-  }
-  else if (lang === "it")
-  {
-    ctx.fillText('Premere "R" per una nuova partita o "H" per ritonare', pong.width / 2, pong.height / 2 + 40);
-  }
-  else
-  {
-    ctx.fillText('Press "R" to replay or "H" to go back to home', pong.width / 2, pong.height / 2 + 40);
+  if (lang === "de") {
+    ctx.fillText(
+      'Drücke "R" für eine weitere Runde oder "H" zum Zurückkehren',
+      pong.width / 2,
+      pong.height / 2 + 40
+    );
+  } else if (lang === "it") {
+    ctx.fillText(
+      'Premere "R" per una nuova partita o "H" per ritonare',
+      pong.width / 2,
+      pong.height / 2 + 40
+    );
+  } else {
+    ctx.fillText(
+      'Press "R" to replay or "H" to go back to home',
+      pong.width / 2,
+      pong.height / 2 + 40
+    );
   }
 
   // Add event listener for keydown events

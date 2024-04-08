@@ -15,23 +15,50 @@
     <div class="stats_heading">
       <h2><b data-i18n="history"></b></h2>
     </div>
-    {% for game in pong_history %}
     <div
-      class="stats_game {% if game.result == 'win' %}stats_win{% elif game.result == 'lose' %}stats_lose{% else %}stats_draw{% endif %}"
+      id="pong_history"
+      style="display: {% if currentGame == 'pong' %}block{% else %}none{% endif %}"
     >
-      <h2 class="stats_result"><data-i18n>{{ game.result }}</data-il8n></h2>
-      <p class="stats_stand"><b data-i18n="result"></b> {{ game.score }}</p>
-      {% if game.against|length > 8 %}
-      <p class="stats_against">
-        <b data-i18n="against"></b> {{ game.against|slice:":10" }}...
-      </p>
-      {% else %}
-      <p class="stats_against">
-        <b data-i18n="against"></b> {{ game.against }}
-      </p>
-      {% endif %}
+      {% for game in pong_history %}
+      <div
+        class="stats_game {% if game.result == 'win' %}stats_win{% elif game.result == 'lose' %}stats_lose{% else %}stats_draw{% endif %}"
+      >
+        <h2 class="stats_result">{{ game.result }}</h2>
+        <p class="stats_stand"><b data-i18n="result"></b> {{ game.score }}</p>
+        {% if game.against|length > 8 %}
+        <p class="stats_against">
+          <b data-i18n="against"></b> {{ game.against|slice:":10" }}...
+        </p>
+        {% else %}
+        <p class="stats_against">
+          <b data-i18n="against"></b> {{ game.against }}
+        </p>
+        {% endif %}
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
+    <div
+      id="ttt_history"
+      style="display: {% if currentGame == 'ttt' %}block{% else %}none{% endif %}"
+    >
+      {% for game in ttt_history %}
+      <div
+        class="stats_game {% if game.result == 'win' %}stats_win{% elif game.result == 'lose' %}stats_lose{% else %}stats_draw{% endif %}"
+      >
+        <h2 class="stats_result">{{ game.result }}</h2>
+        <p class="stats_stand"><b data-i18n="result"></b> {{ game.score }}</p>
+        {% if game.against|length > 8 %}
+        <p class="stats_against">
+          <b data-i18n="against"></b> {{ game.against|slice:":10" }}...
+        </p>
+        {% else %}
+        <p class="stats_against">
+          <b data-i18n="against"></b> {{ game.against }}
+        </p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
   </div>
   <div class="stats_right">
     <div class="stats_heading">
@@ -62,54 +89,63 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const slider = document.querySelector('.switch input[type="checkbox"]');
-    var p_wins = {{ pong_win }};
-    var p_draws = {{ pong_draw }};
-    var p_losses = {{ pong_lose }};
+  const slider = document.querySelector('.switch input[type="checkbox"]');
+  var p_wins = {{ pong_win }};
+  var p_draws = {{ pong_draw }};
+  var p_losses = {{ pong_lose }};
 
-    console.log(p_draws, p_losses, p_wins);
+  var t_wins = {{ ttt_win }};
+  var t_draws = {{ ttt_draw }};
+  var t_losses = {{ ttt_lose }};
 
-    var t_wins = {{ ttt_win }};
-    var t_draws = {{ ttt_draw }};
-    var t_losses = {{ ttt_lose }};
+  var wins = p_wins;
+  var draws = p_draws;
+  var losses = p_losses;
 
-    var wins = p_wins;
-    var draws = p_draws;
-    var losses = p_losses;
-
-    // Check the initial state
-    let currentGame = slider.checked ? 'ttt' : 'pong';
-    const chart = new Chart(document.getElementById('donutGraph1'), {
-        type: 'doughnut',
-        data: {
-        datasets: [{
-          data: [wins, losses, draws],
-          backgroundColor: ['#277027', '#962b2b', '#414141']
-        }]
-        },
-        options: {}
-      });
-    slider.addEventListener('change', function() {
-      chart.destroy();
-    // Update currentGame based on slider state
-    currentGame = slider.checked ? 'ttt' : 'pong';
-
-    // Update wins, draws, and losses based on currentGame
-    wins = currentGame === 'pong' ? p_wins : t_wins;
-    draws = currentGame === 'pong' ?  p_draws :  t_draws;
-    losses = currentGame === 'pong' ?  p_losses :  t_losses;
-    console.log(wins, draws, losses);
-          // Donut graph for wins, losses, draws
-    const chart = new Chart(document.getElementById('donutGraph1'), {
+  // Check the initial state
+  let currentGame = slider.checked ? 'ttt' : 'pong';
+  const chart1 = new Chart(document.getElementById('donutGraph1'), {
       type: 'doughnut',
       data: {
-      datasets: [{
-        data: [wins, losses, draws],
-        backgroundColor: ['#277027', '#962b2b', '#414141']
-      }]
+          datasets: [{
+              data: currentGame === 'pong' ? [wins, losses, draws] : [t_wins, t_losses, t_draws],
+              backgroundColor: ['#277027', '#962b2b', '#414141']
+          }]
       },
       options: {}
-    });
+  });
+
+  const chart2 = new Chart(document.getElementById('donutGraph2'), {
+      type: 'doughnut',
+      data: {
+          datasets: [{
+              data: currentGame === 'pong' ? [wins, losses, draws] : [t_wins, t_losses, t_draws],
+              backgroundColor: ['#277027', '#962b2b', '#414141']
+          }]
+      },
+      options: {}
+  });
+
+  slider.addEventListener('change', function() {
+      // Update currentGame based on slider state
+      currentGame = slider.checked ? 'ttt' : 'pong';
+
+      // Update chart data based on currentGame
+      if (currentGame === 'pong') {
+          chart1.data.datasets[0].data = [p_wins, p_losses, p_draws];
+          chart2.data.datasets[0].data = [p_wins, p_losses, p_draws];
+      } else {
+          chart1.data.datasets[0].data = [t_wins, t_losses, t_draws];
+          chart2.data.datasets[0].data = [t_wins, t_losses, t_draws];
+      }
+
+      // Update the charts
+      chart1.update();
+      chart2.update();
+
+      // Update history display
+      document.getElementById('pong_history').style.display = currentGame === 'pong' ? 'block' : 'none';
+      document.getElementById('ttt_history').style.display = currentGame === 'ttt' ? 'block' : 'none';
   });
 </script>
 

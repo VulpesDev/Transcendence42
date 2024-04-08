@@ -279,9 +279,9 @@ function draw() {
 
   // Check if one player reached 11 points
   if (leftPlayerScore >= 11 || rightPlayerScore >= 11) {
-	let win = leftPlayerScore >= 2 ? "win" : "lose";
+	let win = leftPlayerScore >= 11 ? "win" : "lose";
     document.getElementById("winner").value = win;
-    document.getElementById("result").value =
+    document.getElementBwyId("result").value =
       leftPlayerScore + " : " + rightPlayerScore;
     document.getElementById("against").value = "AI";
 

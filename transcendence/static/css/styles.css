@@ -735,7 +735,7 @@ img {
 }
 
 .profile_image {
-  width: 100px;
+  width: 120%;
   border-radius: 9999px;
 }
 
@@ -791,6 +791,11 @@ img {
 .profile_submit:hover {
   background-color: #03b4a5;
   color: black;
+}
+
+.edit_profile {
+  width: 80px;
+  height: 80px;
 }
 
 /*=============== SLIDER ===============*/
@@ -861,4 +866,10 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/*=============== GAMES ===============*/
+
+.display_hidden {
+  display: none;
 }
