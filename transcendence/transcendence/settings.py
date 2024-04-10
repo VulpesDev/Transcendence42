@@ -78,20 +78,20 @@ WSGI_APPLICATION = 'transcendence.wsgi.application'
 
 DATABASES = {
      #'ENGINE' used to be 'django.db.backends.postgresql'
-     #'HOST' used to be 'db'  
-     #'default' (or 'postgres'): {
-     'postgres': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+     #'HOST': has to be db; localhost during migration(s)
+     #'postgres': {
+     'default' : {
+         'ENGINE': 'django.db.backends.postgresql',
          'NAME': 'postgres',
          'USER': 'postgres',
          'PASSWORD': 'postgres',
          'HOST': 'db',
          'PORT': "5432",
      },
-	 'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-     },
+	 #'default': {
+     #   'ENGINE': 'django.db.backends.sqlite3',
+     #   'NAME': BASE_DIR / 'db.sqlite3',
+     #},
 }
 
 

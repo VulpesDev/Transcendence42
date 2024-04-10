@@ -163,11 +163,13 @@ img {
 }
 
 .nav__menu {
-  margin-bottom: 4rem;
+  /*margin-bottom: 4rem;*/
+  margin-top: 0rem;
   margin: 0 auto;
   width: 30%;
   position: fixed;
-  bottom: 4rem;
+  /*bottom: 4rem;*/
+  top: 0rem;
   background-color: white;
   border-radius: 4rem;
   padding: 2rem 3rem;
