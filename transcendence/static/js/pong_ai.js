@@ -281,11 +281,11 @@ function draw() {
   if (leftPlayerScore >= 11 || rightPlayerScore >= 11) {
 	let win = leftPlayerScore >= 11 ? "win" : "lose";
     document.getElementById("winner").value = win;
-    document.getElementBwyId("result").value =
+    document.getElementById("result").value =
       leftPlayerScore + " : " + rightPlayerScore;
     document.getElementById("against").value = "AI";
 
-    pong_ai_btn.click();
+    //pong_ai_btn.click();
     endGame();
     return;
   }
@@ -353,10 +353,11 @@ function endGame() {
   document.addEventListener("keydown", function (event) {
     if (event.key === "r") {
       window.location.reload();
+      pong_ai_btn.click();
       resetGame();
     } else if (event.key === "h") {
       // Go back to home
-	  pong_ai_btn.click();
+      pong_ai_btn.click();
       window.location.href = "/games";
     }
   });

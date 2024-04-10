@@ -356,7 +356,7 @@ function draw() {
       topPlayerScore;
     document.getElementById("against").value = "4Play";
 
-    pong_ai_btn.click();
+    //pong_ai_btn.click();
     endGame();
     return;
   }
@@ -430,9 +430,11 @@ function endGame() {
   document.addEventListener("keydown", function (event) {
     if (event.key === "r") {
       window.location.reload();
+      pong_ai_btn.click();
       resetGame();
     } else if (event.key === "h") {
       // Go back to home
+      pong_ai_btn.click();
       window.location.href = "/games";
     }
   });
