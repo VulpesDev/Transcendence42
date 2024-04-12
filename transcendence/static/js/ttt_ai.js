@@ -209,7 +209,7 @@ function checkMousePos(canvas, evt)
 }
 
 document.body.onmousedown = function(event){
-	if (turn_tracker > 0) {
+	if (turn_tracker === 1) {
 		++mouseDown[event.button];
 		++mouseDownCount;
 		
@@ -588,7 +588,7 @@ function loss_chance()
 		//Take the top right or bottom left to save the game.
 		if (fields[2] === 1 && fields[6] === 0)
 		{
-			takeField(40, 450, 2);
+			takeField(50, 450, 2);
 			return;
 		}
 		else if (fields[6] === 1 && fields[2] === 0)
@@ -715,7 +715,7 @@ function loss_chance()
 function AIopponent()
 {
 	if (fields[4] === 0)
-		takeField(250, 250, 2)
+		takeField(250, 250, 2);
 	else if (win_chance() === 0)
 		loss_chance();
 }

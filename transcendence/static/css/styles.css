@@ -427,6 +427,13 @@ img {
   background-position: center;
   background-repeat: no-repeat;
 }
+  
+.ttt_field_new {
+  background-image: url("../assets/ttt_images/ttt_grid_new.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 /*=============== PONG ===============*/
 

@@ -77,6 +77,10 @@ def games(request):
 @login_required(login_url='login')
 def ttt(request):
 	return render(request, "ttt/ttt.html")
+    
+@login_required(login_url='login')
+def ttt_new(request):
+	return render(request, "ttt/ttt_new.html")
 
 @login_required(login_url='login')
 def ttt_ai(request):
@@ -90,7 +94,19 @@ def ttt_ai(request):
     users_data = User.objects.get(username=request.user)
     print(users_data)
     return render(request, "ttt/ttt_ai.html", {'users_data': users_data})
-#	return render(request, "ttt/ttt_ai.html")
+
+@login_required(login_url='login')
+def ttt_new_ai(request):
+    if request.method == "POST":
+        result = request.POST.get('winner')
+        score = request.POST.get('result')
+        against = request.POST.get('against')
+        game = TTTGame(name=request.user, result=result, score=score, against=against)
+        game.save()
+        print(game)
+    users_data = User.objects.get(username=request.user)
+    print(users_data)
+    return render(request, "ttt/ttt_new_ai.html", {'users_data': users_data})
 
 @login_required(login_url='login')
 def stats(request):

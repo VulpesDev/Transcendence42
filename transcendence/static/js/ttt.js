@@ -388,11 +388,13 @@ function endGame()
 		if (event.key === "r")
 		{
 			window.location.reload();
+			ttt_btn.click();
 			resetGame();
 		}
 		else if (event.key === "h")
 		{
 			// Go back to home
+			ttt_btn.click();
 			window.location.href = "/games";
 		}
 	});

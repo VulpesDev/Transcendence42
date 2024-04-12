@@ -1,0 +1,29 @@
+{% extends 'main.html' %} {% block content %}
+
+<div>
+  <h1 class="heading">Tic Tac Toe</h1>
+</div>
+<form method="POST" action="" class="ttt_form display_hidden" id="ttt_new_form">
+  {% csrf_token %}
+  <input type="text" id="winner" name="winner" value="" />
+  <input type="text" name="result" id="result" value="" />
+  <input type="text" name="against" id="against" value="" />
+  <button id="ttt_new_btn" type="submit" value="submit" class="btn">
+    <b data-i18n="submit"></b>
+  </button>
+</form>
+
+<div class="ttt">
+  <canvas
+    id="ttt_game"
+	class="ttt_field_new"
+    width="800"
+    height="600"
+  ></canvas>
+  {% load static %}
+  <script src="{% static 'js/ttt_new.js' %}?v={{ timestamp }}"></script>
+</div>
+
+<script src="../../static/languages/translate.js"></script>
+
+{% endblock content %}
