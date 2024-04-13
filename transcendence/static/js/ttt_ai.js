@@ -748,7 +748,6 @@ function draw()
 		document.getElementById("result").value =
 		player_score + " : " + ai_score;
 		document.getElementById("against").value = "AI";
-		//ttt_ai_btn.click();
 		endGame();
 		return;
 	}

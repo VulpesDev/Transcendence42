@@ -28,6 +28,9 @@ var turn_tracker = 0;
 // 1 = player 1    |    2 = player 2
 var ttt_winner = 0;
 
+// Making sure the AI only secures on centerfield
+var first_turn = 0;
+
 // Define variables for mouse input.
 // 0 = nothing pressed.
 // 1 = left mouse button.
@@ -348,6 +351,7 @@ function resetGame()
 		turn_tracker = 2;
 	else 
 		turn_tracker = 1;
+	first_turn = 0;
 	fields = [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3];
 	rendered = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
 	animationId = requestAnimationFrame(draw);
@@ -434,13 +438,13 @@ function endGame()
 		if (event.key === "r")
 		{
 			window.location.reload();
-			ttt_ai_btn.click();
+			ttt_new_ai_btn.click();
 			resetGame();
 		}
 		else if (event.key === "h")
 		{
 			// Go back to home
-			ttt_ai_btn.click();
+			ttt_new_ai_btn.click();
 			window.location.href = "/games";
 		}
 	});
@@ -713,7 +717,7 @@ function takeTurn()
 			else if (r === 6)
 				takeField(450, 250, 2);
 			else if (r === 7)
-				takeField(650, 450, 2);
+				takeField(650, 250, 2);
 			else if (r === 8)
 				takeField(50, 450, 2);
 			else if (r === 9)
@@ -956,10 +960,14 @@ function loss_chance()
 
 function AIopponent()
 {
-	if (fields[5] === 0)
-		takeField(250, 250, 2);
-	else if (fields[6] === 0)
-		takeField(450, 250, 2);
+	if (first_turn === 0)
+	{
+		if (fields[5] === 0)
+			takeField(250, 250, 2);
+		else if (fields[6] === 0)
+			takeField(450, 250, 2);
+		first_turn = 1;
+	}
 	else if (win_chance() === 0)
 		loss_chance();
 }
@@ -992,7 +1000,6 @@ function draw()
 		document.getElementById("result").value =
 		player_score + " : " + ai_score;
 		document.getElementById("against").value = "AI";
-		//ttt_ai_btn.click();
 		endGame();
 		return;
 	}

@@ -404,6 +404,46 @@ img {
   background-color: var(--body-color);
 }
 
+.ttt_2 {
+  border: 0.3rem solid var(--body-color);
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.ttt_ai {
+  border: 0.3rem solid var(--body-color);
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.ttt_new {
+  border: 0.3rem solid var(--body-color);
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.ttt_new_ai {
+  border: 0.3rem solid var(--body-color);
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.ttt_player:hover {
+  background-color: var(--body-color);
+}
+
 /*============= TICTACTOE ============*/
 
 .ttt {
