@@ -39,8 +39,16 @@ def home(request):
 
 @login_required(login_url='login')
 def pong(request):
+    if request.method == "POST":
+        result = request.POST.get('winner')
+        score = request.POST.get('result')
+        against = request.POST.get('against')
+        game = PongGame(name=request.user, result=result, score=score, against=against)
+        game.save()
     users_data = User.objects.get(username=request.user)
     return render(request, "pong/pong.html", {'users_data': users_data})
+    #users_data = User.objects.get(username=request.user)
+    #return render(request, "pong/pong.html", {'users_data': users_data})
 
 @login_required(login_url='login')
 def pong_4(request):
@@ -76,11 +84,31 @@ def games(request):
 
 @login_required(login_url='login')
 def ttt(request):
-	return render(request, "ttt/ttt.html")
+    if request.method == "POST":
+        result = request.POST.get('winner')
+        score = request.POST.get('result')
+        against = request.POST.get('against')
+        game = TTTGame(name=request.user, result=result, score=score, against=against)
+        game.save()
+        print(game)
+    users_data = User.objects.get(username=request.user)
+    print(users_data)
+    return render(request, "ttt/ttt.html", {'users_data': users_data})
+	#return render(request, "ttt/ttt.html")
     
 @login_required(login_url='login')
 def ttt_new(request):
-	return render(request, "ttt/ttt_new.html")
+    if request.method == "POST":
+        result = request.POST.get('winner')
+        score = request.POST.get('result')
+        against = request.POST.get('against')
+        game = TTTGame(name=request.user, result=result, score=score, against=against)
+        game.save()
+        print(game)
+    users_data = User.objects.get(username=request.user)
+    print(users_data)
+    return render(request, "ttt/ttt_new.html", {'users_data': users_data})
+	#return render(request, "ttt/ttt_new.html")
 
 @login_required(login_url='login')
 def ttt_ai(request):
@@ -121,6 +149,7 @@ def stats(request):
         ttt_draw = ttt_history.filter(result='draw').count()
         ttt_lose = ttt_history.filter(result='lose').count()
         pong_history_last_8 = list(pong_history.order_by('-id')[:8])
+        print(pong_history)
         print(ttt_history)
         context = {'pong_history': pong_history_last_8, 'pong_win': pong_win, 'pong_draw': pong_draw, 'pong_lose': pong_lose, 'ttt_history': ttt_history, 'ttt_win': ttt_win, 'ttt_draw': ttt_draw, 'ttt_lose': ttt_lose}
     return render(request, "stats/stats.html", context)

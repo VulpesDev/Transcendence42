@@ -3,12 +3,12 @@
 <div>
   <h1 class="heading">Pong</h1>
 </div>
-<form method="POST" action="" class="pong_form display_hidden" id="pong_ai_form">
+<form method="POST" action="" class="pong_form display_hidden" id="pong_form">
   {% csrf_token %}
   <input type="text" id="winner" name="winner" value="" />
   <input type="text" name="result" id="result" value="" />
   <input type="text" name="against" id="against" value="" />
-  <button id="pong_ai_btn" type="submit" value="submit" class="btn">
+  <button id="pong_btn" type="submit" value="submit" class="btn">
     <b data-i18n="submit"></b>
   </button>
 </form>

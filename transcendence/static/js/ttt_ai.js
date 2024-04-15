@@ -366,19 +366,19 @@ function endGame()
 		}
 	}
 
-	// Ask for replay or return to home
+	// Sending the gamedata and resetting
 	context.font = "20px Poppins";
 	if (lang === "de")
 	{
-		context.fillText('Drücke "R" für eine weitere Runde oder "H" zum Zurückkehren', canvas.width / 2, canvas.height / 2 + 40);
+		context.fillText('Drücke "R", um das Resultat zu bestätigen und eine neue Runde zu beginnen.', canvas.width / 2, canvas.height / 2 + 40);
 	}
 	else if (lang === "it")
 	{
-		context.fillText('Premere "R" per una nuova partita o "H" per ritonare', canvas.width / 2, canvas.height / 2 + 40);
+		context.fillText('Premere "R" per confermare il risultato ed iniziare una nuova partita.', canvas.width / 2, canvas.height / 2 + 40);
 	}
 	else
 	{
-		context.fillText('Press "R" to replay or "H" to go back to home', canvas.width / 2, canvas.height / 2 + 40);
+		context.fillText('Press "R" to confirm the result and to begin another round.', canvas.width / 2, canvas.height / 2 + 40);
 	}
 	
 	// Add event listener for keydown events
@@ -389,12 +389,6 @@ function endGame()
 			window.location.reload();
 			ttt_ai_btn.click();
 			resetGame();
-		}
-		else if (event.key === "h")
-		{
-			// Go back to home
-			ttt_ai_btn.click();
-			window.location.href = "/games";
 		}
 	});
 }
