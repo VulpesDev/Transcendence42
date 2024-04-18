@@ -30,6 +30,7 @@
 	"wins": "Wins",
 	"draws": "Draws",
 	"losses": "Losses",
+	"recently": "Recently",
 	"close_wins": "Close Wins",
 	"easy_wins": "Easy Wins",
 	"stats": "Stats",
@@ -37,5 +38,6 @@
 	"logout": "Logout",
 	"win": "Win",
 	"draw": "Draw",
-	"loss": "Loss"
+	"loss": "Loss",
+	"bio": "About me: "
 }

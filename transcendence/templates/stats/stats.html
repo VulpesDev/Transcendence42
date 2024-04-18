@@ -74,15 +74,10 @@
         <canvas id="donutGraph1"></canvas>
       </div>
       <div>
-        <p class="graph_text">
-          <span class="graph_close"><b data-i18n="close_wins"></b></span>
-          <span class="grap_easy"><b data-i18n="easy_wins"></b></span>
-        </p>
         <canvas id="donutGraph2"></canvas>
       </div>
     </div>
     <div class="graph_line">
-      <p class="graph_text line_text"><b data-i18n="wins"></b></p>
       <canvas id="lineGraph" class="graph_line"></canvas>
     </div>
   </div>
@@ -117,12 +112,6 @@
 
   const chart2 = new Chart(document.getElementById('donutGraph2'), {
       type: 'doughnut',
-      data: {
-          datasets: [{
-              data: currentGame === 'pong' ? [wins, losses, draws] : [t_wins, t_losses, t_draws],
-              backgroundColor: ['#277027', '#962b2b', '#414141']
-          }]
-      },
       options: {}
   });
 
@@ -133,10 +122,8 @@
       // Update chart data based on currentGame
       if (currentGame === 'pong') {
           chart1.data.datasets[0].data = [p_wins, p_losses, p_draws];
-          chart2.data.datasets[0].data = [p_wins, p_losses, p_draws];
       } else {
           chart1.data.datasets[0].data = [t_wins, t_losses, t_draws];
-          chart2.data.datasets[0].data = [t_wins, t_losses, t_draws];
       }
 
       // Update the charts

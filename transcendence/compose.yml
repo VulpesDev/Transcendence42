@@ -10,11 +10,8 @@ services:
     restart: on-failure
     volumes:
       - ./data/db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_HOST_AUTH_METHOD: trust
+    env_file:
+      - ./env/postgres.env
     ports:
       - "5432:5432"
       
@@ -22,9 +19,8 @@ services:
     container_name: pgadmin4_container
     image: dpage/pgadmin4
     restart: on-failure
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
+    env_file:
+      - ./env/pgadmin.env
     ports:
       - "5050:80"
       

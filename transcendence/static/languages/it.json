@@ -30,6 +30,7 @@
 	"wins": "Vittorie",
 	"draws": "Disegno",
 	"losses": "Sconfitte",
+	"recently": "Recentemente",
 	"close_wins": "Vittorie di misura",
 	"easy_wins": "Vittorie nette",
 	"stats": "Statistiche",
@@ -37,5 +38,6 @@
 	"logout": "Disconnettersi",
 	"win": "Vittoria",
 	"draw": "Disegno",
-	"loss": "Sconfitta"
+	"loss": "Sconfitta",
+	"bio": "Su di me: "
 }

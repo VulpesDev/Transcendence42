@@ -30,6 +30,7 @@
 	"wins": "Siege",
 	"draws": "Unentschieden",
 	"losses": "Niederlagen",
+	"recently": "Vor kurzem",
 	"close_wins": "Knappe Siege",
 	"easy_wins": "Klare Siege",
 	"stats": "Statistiken",
@@ -37,5 +38,6 @@
 	"logout": "Abmelden",
 	"win": "Sieg",
 	"draw": "Unentschieden",
-	"loss": "Niederlage"
+	"loss": "Niederlage",
+	"bio": "Über mich: "
 }

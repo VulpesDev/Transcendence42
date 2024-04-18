@@ -149,9 +149,10 @@ def stats(request):
         ttt_draw = ttt_history.filter(result='draw').count()
         ttt_lose = ttt_history.filter(result='lose').count()
         pong_history_last_8 = list(pong_history.order_by('-id')[:8])
+        ttt_history_last_8 = list(ttt_history.order_by('-id')[:8])
         print(pong_history)
         print(ttt_history)
-        context = {'pong_history': pong_history_last_8, 'pong_win': pong_win, 'pong_draw': pong_draw, 'pong_lose': pong_lose, 'ttt_history': ttt_history, 'ttt_win': ttt_win, 'ttt_draw': ttt_draw, 'ttt_lose': ttt_lose}
+        context = {'pong_history': pong_history_last_8, 'pong_win': pong_win, 'pong_draw': pong_draw, 'pong_lose': pong_lose, 'ttt_history': ttt_history_last_8, 'ttt_win': ttt_win, 'ttt_draw': ttt_draw, 'ttt_lose': ttt_lose}
     return render(request, "stats/stats.html", context)
 
 
