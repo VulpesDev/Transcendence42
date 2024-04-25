@@ -1,0 +1,48 @@
+{% extends 'main.html' %} {% block content %}
+
+<script src="../../static/js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+	if ({{match_id}} == 4) {
+		$('p').hide();
+		$('b').hide();
+		$('form[class="modal_form"]').hide();
+		$('input[class="submit_button"]').hide();
+	} else {
+		$('p').show();
+		$('b').show();
+		$('form[class="modal_form"]').show();
+		$('input[class="submit_button"]').show();
+	}
+})
+</script>
+
+<span data-typeId="player_1" data-type="player_1" data-status={{p1_status}} data-score={{p1_score}} data-name={{player_1}} id="p1"></span>
+<span data-typeId="player_2" data-type="player_2" data-status={{p2_status}} data-score={{p2_score}} data-name={{player_2}} id="p2"></span>
+<span data-typeId="player_3" data-type="player_3" data-status={{p3_status}} data-score={{p3_score}} data-name={{player_3}} id="p3"></span>
+<span data-typeId="player_4" data-type="player_4" data-status={{p4_status}} data-score={{p4_score}} data-name={{player_4}} id="p4"></span>
+<span data-typeId="match" data-type="match" data-n_player_1={{n_player_1}} data-n_player_2={{n_player_2}} data-match_id={{match_id}} id="history"></span>
+
+<center>
+<p data-i18n="next"></p> <b>{{n_player_1}}</b> <b data-i18n="versus"></b> <b>{{n_player_2}}</b><br>
+<p data-i18n="please"></p>
+<form action="/pong_tournament_game_4/" method="GET" class="modal_form">
+    {% csrf_token %}
+    <input type="submit" value="OK" class="submit_button"/>
+</form>
+</center>
+
+<div class="pong_tournament">
+  <canvas
+    id="pong_tournament_small"
+	class="tournament_1"
+	width="1000"
+    height="600"
+  ></canvas>
+  {% load static %}
+  <script src="{% static 'js/pong_tournament.js' %}?v={{ timestamp }}"></script>
+</div>
+
+<script src="../../static/languages/translate.js"></script>
+
+{% endblock content %}

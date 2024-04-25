@@ -39,5 +39,17 @@
 	"win": "Vittoria",
 	"draw": "Disegno",
 	"loss": "Sconfitta",
-	"bio": "Su di me: "
+	"bio": "Su di me: ",
+	"p1": "Giocatore 1: ",
+	"p2": "Giocatore 2: ",
+	"p3": "Giocatore 3: ",
+	"p4": "Giocatore 4: ",
+	"p5": "Giocatore 5: ",
+	"p6": "Giocatore 6: ",
+	"p7": "Giocatore 7: ",
+	"p8": "Giocatore 8: ",
+	"tourney": "Per favore registrare i partecipanti!",
+	"next": "Prossima partita: ",
+	"versus": " contro ",
+	"please": "Premere 'OK' per cominciare!"
 }

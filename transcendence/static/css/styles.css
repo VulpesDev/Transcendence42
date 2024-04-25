@@ -359,6 +359,13 @@ img {
   background-repeat: no-repeat;
 }
 
+.games_3 {
+  background-image: url("../assets/img/tournament.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .games_item:hover {
   background-color: var(--body-color);
   border-color: white;
@@ -401,6 +408,67 @@ img {
 }
 
 .pong_player:hover {
+  background-color: var(--body-color);
+}
+
+.pong_tournament {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+#pong_tournament_game {
+  border: 0.8rem solid white;
+  border-radius: 1rem;
+}
+
+#pong_tournament_small {
+  border: 0.8rem solid white;
+  border-radius: 1rem;
+}
+
+#pong_tournament_big {
+  border: 0.8rem solid white;
+  border-radius: 1rem;
+}
+
+.tournament_1 {
+  background-image: url("../assets/img/tournament_1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tournament_2 {
+  background-image: url("../assets/img/tournament_2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pong_tournament_4 {
+  border: 0.3rem solid var(--body-color);
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.pong_tournament_8 {
+  border: 0.3rem solid var(--body-color);
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.pong_tournament_player:hover {
   background-color: var(--body-color);
 }
 
@@ -641,7 +709,6 @@ img {
 .stats_lose {
   background: linear-gradient(to right, #962b2b, rgba(255, 0, 0, 0));
 }
-
 .stats_draw {
   background: linear-gradient(to right, #414141, rgba(0, 0, 0, 0));
 }

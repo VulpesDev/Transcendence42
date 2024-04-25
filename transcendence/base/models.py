@@ -21,3 +21,14 @@ class PongGame(models.Model):
 	result = models.CharField(max_length=20)
 	score = models.CharField(max_length=20)
 	against = models.CharField(max_length=20)
+    
+class TournamentTable(models.Model):
+    p_id = models.CharField(max_length=1)
+    name = models.CharField(max_length=20, null=True)
+    number = models.CharField(max_length=1)
+    status = models.CharField(max_length=1)
+    
+class TournamentProgress(models.Model):
+    match_id = models.CharField(max_length=1)
+    player_1 = models.CharField(max_length=20, null=True)
+    player_2 = models.CharField(max_length=20, null=True)

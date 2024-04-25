@@ -39,5 +39,17 @@
 	"win": "Sieg",
 	"draw": "Unentschieden",
 	"loss": "Niederlage",
-	"bio": "Über mich: "
+	"bio": "Über mich: ",
+	"p1": "Spieler 1: ",
+	"p2": "Spieler 2: ",
+	"p3": "Spieler 3: ",
+	"p4": "Spieler 4: ",
+	"p5": "Spieler 5: ",
+	"p6": "Spieler 6: ",
+	"p7": "Spieler 7: ",
+	"p8": "Spieler 8: ",
+	"tourney": "Bitte die Teilnehmer anmelden!",
+	"next": "Nächste Runde: ",
+	"versus": " gegen ",
+	"please": "Drücke 'OK', um zu beginnen!"
 }

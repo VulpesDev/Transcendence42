@@ -695,7 +695,7 @@ function takeTurn()
 	let r = 0;
 	if (turn_tracker === 2)
 	{
-		r = Math.floor(Math.random() * 10);
+		r = Math. floor(Math. random()*10) + 1
 		if (fields[r] === 0)
 		{
 			if (r === 1)
