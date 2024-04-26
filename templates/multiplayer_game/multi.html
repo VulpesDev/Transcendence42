@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Score</title>
+  </head>
+  <body>
+    <h1><b data-i18n="game_state"></b></h1>
+    <div id="game-state"></div>
+
+    <!-- Include your JavaScript code here -->
+    <script>
+      // Update game state using JavaScript
+      function updateGameState(gameState) {
+        const gameStateElement = document.getElementById("game-state");
+        // Clear previous state
+        gameStateElement.innerHTML = "";
+
+        // Create HTML elements to display game state
+        const gameStateHtml = `
+                <p>Player 1 Score: ${gameState.player1Score}</p>
+                <p>Player 2 Score: ${gameState.player2Score}</p>
+                <!-- Add more game state information here -->
+            `;
+
+        // Update the game state display
+        gameStateElement.innerHTML = gameStateHtml;
+        console.log(gameStateHtml);
+      }
+
+      // WebSocket connection
+      const ws = new WebSocket("ws://localhost:8000/ws/game/");
+
+      ws.onopen = function () {
+        console.log("WebSocket connection established.");
+      };
+
+      ws.onmessage = function (event) {
+        const message = JSON.parse(event.data);
+        // Assuming you receive game state updates
+        if (message.type === "game_state_update") {
+          updateGameState(message.gameState);
+        }
+      };
+    </script>
+	
+	<script src="../../static/languages/translate.js"></script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+{% extends 'main.html' %} {% block content %}
+
+<div>
+  <h1 class="heading">Pong Tournament</h1>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+<b data-i18n="tourney"></b>
+<br>
+<form action="/pong_tournament_8_table/" method="POST" class="modal_form">
+    {% csrf_token %}
+    <label for="name_1"><b data-i18n="p1"></b></label>
+    <input type="text" id="name_1" name="name_1" placeholder="1" required/>
+    <label for="name_2"><b data-i18n="p2"></b></label>
+    <input type="text" id="name_2" name="name_2" placeholder="2" required/>
+    <label for="name_3"><b data-i18n="p3"></b></label>
+    <input type="text" id="name_3" name="name_3" placeholder="3" required/>
+    <label for="name_4"><b data-i18n="p4"></b></label>
+    <input type="text" id="name_4" name="name_4" placeholder="4" required/>
+	<label for="name_5"><b data-i18n="p5"></b></label>
+    <input type="text" id="name_5" name="name_5" placeholder="5" required/>
+    <label for="name_6"><b data-i18n="p6"></b></label>
+    <input type="text" id="name_6" name="name_6" placeholder="6" required/>
+    <label for="name_7"><b data-i18n="p7"></b></label>
+    <input type="text" id="name_7" name="name_7" placeholder="7" required/>
+    <label for="name_8"><b data-i18n="p8"></b></label>
+    <input type="text" id="name_8" name="name_8" placeholder="8" required/>
+    <br>
+    <input type="submit" value="OK" class="button" id="saveForm"/>
+</form>
+
+<script src="../../static/js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+	var $form = $('form'),
+		url = '/pong_tournament_8/'
+        
+        $('#saveForm').on('click', function(e) {
+			e.stopPropagation();
+
+			var jqxhr = $.ajax({
+			url: url,
+			method: "GET",
+            dataType: "json",
+			data: $form.serialize()
+          })
+		})
+})
+</script>
+
+{% endblock content %}

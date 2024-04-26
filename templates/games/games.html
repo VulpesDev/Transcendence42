@@ -1,0 +1,109 @@
+{% extends 'main.html' %} {% block content %}
+{% load static %}
+<header>
+
+</header>
+<div>
+  <h1 class="heading"><b data-i18n="games"></b></h1>
+</div>
+<div class="games_list">
+  <a href="" id="modalPongButton" class="games_item games_1"> </a>
+  <a href="" id="modalTTTButton" class="games_item games_2"> </a>
+  <a href="" id="modalPongTournamentButton" class="games_item games_3"> </a>
+</div>
+
+<div id="myModalPongTournament" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 class="modal_header"><b data-i18n="select_gamemode"></b></h1>
+    <div class="pong_tournament_modal">
+      <div class="pong_tournament_players">
+        <a href="/pong_tournament_4">
+          <img
+            class="pong_tournament_4 pong_tournament_player"
+            src="../../static/assets/img/4p.png"
+            alt="4 people"
+          /></a>
+        <a href="/pong_tournament_8">
+          <img
+            class="pong_tournament_8 pong_tournament_player"
+            src="../../static/assets/img/8p.png"
+            alt="8 people"
+          /></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="myModalTTT" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 class="modal_header"><b data-i18n="select_gamemode"></b></h1>
+   <div class="ttt_modal">
+      <div class="ttt_players">
+        <a href="/ttt">
+          <img
+            class="ttt_2 ttt_player"
+            src="../../static/assets/img/2p.png"
+            alt=""
+          />
+        </a>
+		<a href="/ttt_new">
+          <img
+            class="ttt_new ttt_player"
+            src="../../static/assets/img/2p_ttt.png"
+            alt=""
+          />
+        </a>
+        <a href="/ttt_ai">
+          <img
+           class="ttt_ai ttt_player"
+            src="../../static/assets/img/ai.png"
+            alt=""
+        /></a>
+		<a href="/ttt_new_ai">
+          <img
+            class="ttt_new_ai ttt_player"
+            src="../../static/assets/img/ai_ttt.png"
+            alt=""
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="myModalPong" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 class="modal_header"><b data-i18n="select_gamemode"></b></h1>
+    <div class="pong_modal">
+      <div class="pong_players">
+        <a href="/pong">
+          <img
+            class="pong_2 pong_player"
+            src="../../static/assets/img/2p.png"
+            alt="2 people"
+          />
+        </a>
+        <a href="/pong_4">
+          <img
+            class="pong_4 pong_player"
+            src="../../static/assets/img/4p.png"
+            alt="4 people"
+          />
+        </a>
+        <a href="/pong_ai">
+          <img
+            class="pong_ai pong_player"
+            src="../../static/assets/img/ai.png"
+            alt=""
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../static/languages/translate.js"></script>
+<script src="../static/js/Modal.js"></script>
+
+{% endblock content %}

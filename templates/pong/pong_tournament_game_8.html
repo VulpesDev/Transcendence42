@@ -1,0 +1,47 @@
+{% extends 'main.html' %} {% block content %}
+
+<script src="../../static/js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+	var $form = $('form'),
+		url = '/pong_tournament_8_table/'
+        
+        $('#png_tournament_form').on('click', function(e) {
+			e.stopPropagation();
+
+			var jqxhr = $.ajax({
+			url: url,
+			method: "GET",
+            dataType: "json",
+			data: $form.serialize()
+          }).success(
+            window.location.href = '/pong_tournament_8_table/'
+          );
+		})
+})
+</script>
+
+<span data-typeId="player_1" data-type="player_1" data-name={{player_1}} id="p1"></span>
+<span data-typeId="player_2" data-type="player_2" data-name={{player_2}} id="p2"></span>
+
+<form method="POST" action="/pong_tournament_8_table/" class="pong_form display_hidden" id="pong_tournament_form">
+  {% csrf_token %}
+  <input type="text" id="winner" name="winner" value="" />
+  <button id="pong_btn" type="submit" value="submit" class="btn">
+  <b data-i18n="submit"></b>
+  </button>
+</form>
+<div class="pong">
+  <canvas
+    id="pong_game"
+    class="{% if users_data.field_color == 'blue' %}pong_blue{% elif users_data.field_color == 'green' %}pong_green {% elif users_data.field_color == 'white' %}pong_white{% endif %}"
+    width="800"
+    height="400"
+  ></canvas>
+  {% load static %}
+  <script src="{% static 'js/pong_tournament_game_8.js' %}?v={{ timestamp }}"></script>
+</div>
+
+<script src="../../static/languages/translate.js"></script>
+
+{% endblock content %}

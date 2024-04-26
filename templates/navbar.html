@@ -1,0 +1,72 @@
+<!-- <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-theme.css" />
+<link rel="stylesheet" href="../static/bootstrap/css/bootstrap-theme.min.css" /> -->
+<!-- <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css" /> -->
+<!-- <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" /> -->
+
+<div>
+  <div class="profile">
+    <img class="profile_pong" src="../static/assets/img/profile.jpeg" alt="" />
+    <div class="dropdown-content">
+      <a href="" id="modalButton" class="dropdown_text hidden"><b data-i18n="configure_profile">
+	  </b></a>
+      <br />
+      <a href="{% url 'logout' %}" class="dropdown_text"
+        ><b data-i18n="logout"></b
+      ></a>
+    </div>
+  </div>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h1 class="modal_header"><b data-i18n="edit_profile"></b></h1>
+      <div class="profile_modal">
+        <div class="">
+          <img
+            class="modal_img"
+            src="../static/assets/img/profile.jpeg"
+            alt="user image"
+          />
+        </div>
+        <div class="modal_text">
+          <p>Username: </p>
+          <p>Email: </p>
+        </div>
+      </div>
+
+      <form action="" method="POST" class="modal_form">
+        {% csrf_token %}
+        <label for="name"><b data-i18n="name"></b></label>
+        <input type="text" id="name" name="name" placeholder="Name" />
+        <label for="email"><b data-i18n="email"></b></label>
+        <input type="text" id="email" name="email" placeholder="Email" />
+        <label for="img_url"><b data-i18n="img_url"></b></label>
+        <input type="text" id="img_url" name="img_url" placeholder="Image URL" />
+        <label for="bio"><b data-i18n="bio"></b></label>
+        <input type="text" id="bio" name="bio" placeholder="Bio" />
+        <br />
+        <input type="submit" value="OK" class="submit_button" />
+      </form>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="nav__menu">
+      <ul class="nav__list">
+        <li class="nav__item nav__1">
+          <a href="/" class="nav__link"></a>
+        </li>
+        <li class="nav__item nav__2">
+          <a href="/games" class="nav__link active-link"> </a>
+        </li>
+
+        <li class="nav__item nav__3">
+          <a href="/stats" class="nav__link"> </a>
+        </li>
+        <li class="nav__item nav__4">
+          <a href="/profile" class="nav__link"> </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<script src="../../static/languages/translate.js"></script>

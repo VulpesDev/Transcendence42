@@ -1,0 +1,39 @@
+{% extends 'main.html' %} {% block content %}
+{% load static %}
+  
+  	<nav>
+		<ul>
+			<br>
+			<li><a href="./" onclick="changeLanguage('en')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+			English</a></li>
+			<li><a href="./" onclick="changeLanguage('de')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+			Deutsch</a></li>
+			<li><a href="./" onclick="changeLanguage('it')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+			Italiano</a></li>
+		</ul>
+	</nav>
+	
+    <div class="home">
+      <div class="logo">
+        <img src="../../static/assets/img/logo.png" alt="logo" />
+      </div>
+      <div class="home_left">
+	    <h1 data-i18n="welcome_message"></h1>
+		<p data-i18n="about"></p>
+        <div class="home_button">
+          <button>
+			<a href="{% url 'login' %}" class="button"><b data-i18n="login"></b></a>
+          </button>
+        </div>
+      </div>
+      <div class="home_right">
+        <img
+          class="home_img"
+          src="../../static/assets/img/login.svg"
+          alt="play"
+        />
+      </div>
+    </div>
+	
+	<script src="../../static/languages/translate.js"></script>
+  {% endblock content %}

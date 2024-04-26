@@ -1,0 +1,28 @@
+{% extends 'main.html' %} {% block content %}
+
+<div>
+  <h1 class="heading">Pong</h1>
+</div>
+<form method="POST" action="" class="pong_form display_hidden" id="pong_ai_form">
+  {% csrf_token %}
+  <input type="text" id="winner" name="winner" value="" />
+  <input type="text" name="result" id="result" value="" />
+  <input type="text" name="against" id="against" value="" />
+  <button id="pong_ai_btn" type="submit" value="submit" class="btn">
+    <b data-i18n="submit"></b>
+  </button>
+</form>
+<div class="pong">
+  <canvas
+    id="pong_game"
+    class="{% if users_data.field_color == 'blue' %}pong_blue{% elif users_data.field_color == 'green' %}pong_green {% elif users_data.field_color == 'white' %}pong_white{% endif %}"
+    width="800"
+    height="400"
+  ></canvas>
+  {% load static %}
+  <script src="{% static 'js/pong_ai.js' %}?v={{ timestamp }}"></script>
+</div>
+
+<script src="../../static/languages/translate.js"></script>
+
+{% endblock content %}

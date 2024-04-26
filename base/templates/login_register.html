@@ -1,0 +1,66 @@
+{% extends 'main.html' %} {% block content %}
+
+    {% if page == 'login' %}
+    <div class="login">
+      <form method="POST" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            ><b data-i18n="username"></b></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            name="username"
+            placeholder=""
+          />
+          <div id="emailHelp" class="form-text">
+            <b data-i18n="privacy"></b>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"><b data-i18n="password"></b></label>
+          <input
+            type="password"
+            name="password"
+            placeholder=""
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+        <div class="register">
+          <div class="btn_42">
+            <a href="{% url 'register' %}" class="btn"><b data-i18n="register"></b></a>
+          </div>
+        </div>
+        <div class="btn_login">
+          <button type="submit" value="Login" class="btn"><b data-i18n="submit"></b></button>
+        </div>
+      </form>
+    </div>
+    {% else %}
+    <div class="login">
+      <form method="POST" action="">
+        {% csrf_token %} {% for field in form %}
+        <div class="form__group form__group">
+          <label for="room_name">{{field.label}}</label>
+          {{field}} {{field.errors}}
+        </div>
+        {% endfor %}
+        <div class="register">
+          <div class="btn_42">
+            <a href="{% url 'login' %}" class="btn"><b data-i18n="already"></b></a>
+          </div>
+        </div>
+        <div class="btn_login">
+          <button type="submit" value="Login" class="btn"><b data-i18n="submit"></b></button>
+        </div>
+      </form>
+    </div>
+    {% endif %}
+	
+	<script src="../../static/languages/translate.js"></script>
+
+  {% endblock content %}
