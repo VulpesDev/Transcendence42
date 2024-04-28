@@ -25,22 +25,4 @@
     <input type="submit" value="OK" class="button" id="saveForm"/>
 </form>
 
-<script src="../../static/js/jquery.js"></script>
-<script>
-$(document).ready(function(){
-	var $form = $('form'),
-		url = '/pong_tournament_4/'
-        
-        $('#saveForm').on('click', function(e) {
-			e.stopPropagation();
-
-			var jqxhr = $.ajax({
-			url: url,
-			method: "GET",
-            dataType: "json",
-			data: $form.serialize()
-          })
-		})
-})
-</script>
 {% endblock content %}

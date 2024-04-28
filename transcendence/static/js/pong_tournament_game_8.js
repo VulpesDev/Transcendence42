@@ -226,7 +226,7 @@ function draw() {
   displayScores();
 
   // Check if one player reached 11 points
-  if (leftPlayerScore >= 11 || rightPlayerScore >= 1) {
+  if (leftPlayerScore >= 11 || rightPlayerScore >= 11) {
     let win = leftPlayerScore >= 11 ? "win" : "lose";
     document.getElementById("winner").value = win;
 

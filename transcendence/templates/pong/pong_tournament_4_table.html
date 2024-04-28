@@ -7,11 +7,11 @@
 <span data-typeId="match" data-type="match" data-n_player_1="{{n_player_1}}" data-n_player_2="{{n_player_2}}" data-match_id={{match_id}} id="history"></span>
 
 <center>
-<p data-i18n="next"></p> <b>{{n_player_1}}</b> <b data-i18n="versus"></b> <b>{{n_player_2}}</b><br>
-<p data-i18n="please"></p>
-<form action="/pong_tournament_game_4/" method="GET" class="modal_form">
+<p data-i18n="next" id="toggle"></p> <b id="toggle2">{{n_player_1}}</b> <b data-i18n="versus" id="toggle3"></b> <b id="toggle4">{{n_player_2}}</b><br>
+<p data-i18n="please" id="toggle5"></p>
+<form action="/pong_tournament_game_4/" method="GET" class="modal_form hidden">
     {% csrf_token %}
-    <input type="submit" value="OK" class="submit_button"/>
+    <input type="submit" value="OK" class="submit_button" id="toggle6"/>
 </form>
 </center>
 
@@ -26,21 +26,15 @@
   <script src="{% static 'js/pong_tournament.js' %}?v={{ timestamp }}"></script>
 </div>
 
-<script src="../../static/js/jquery.js"></script>
 <script>
-$(document).ready(function(){
-	if ({{match_id}} == 4) {
-		$('p').hide();
-		$('b').hide();
-		$('form[class="modal_form"]').hide();
-		$('input[class="submit_button"]').hide();
-	} else {
-		$('p').show();
-		$('b').show();
-		$('form[class="modal_form"]').show();
-		$('input[class="submit_button"]').show();
-	}
-})
+if ({{match_id}} >= 4) {
+	document.getElementById('toggle').style.visibility = 'hidden';
+	document.getElementById('toggle2').style.visibility = 'hidden';
+	document.getElementById('toggle3').style.visibility = 'hidden';
+	document.getElementById('toggle4').style.visibility = 'hidden';
+	document.getElementById('toggle5').style.visibility = 'hidden';
+	document.getElementById('toggle6').style.visibility = 'hidden';
+}
 </script>
 
 <script src="../../static/languages/translate.js"></script>
