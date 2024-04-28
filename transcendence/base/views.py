@@ -147,6 +147,37 @@ def pong_tournament_4_table(request):
         names[1] = request.POST.get('name_2')
         names[2] = request.POST.get('name_3')
         names[3] = request.POST.get('name_4')
+        
+        xx = 0  #iterations
+        dd = 0  #list of names
+        a = 0   #array variable
+        v = 1   #how many dupes?
+        f = -1  #which ID has dupes?
+        c = 0   #index for checking
+        ii = 1  #ID indexing
+        dupes = [-1, -1, -1, -1]
+        while dd < 4:
+            while c < 4:
+                if names[dd] == names[c] and dd != c:
+                    if f == -1:
+                        f = dd
+                        dupes[0] = dd
+                    if v < 4:
+                        dupes[v] = c
+                        v += 1
+                c += 1
+            if f > -1:
+                while a < v and a < 4:
+                    names[dupes[a]] += ("(" + str(ii) + ")")
+                    ii += 1
+                    a += 1
+            dupes = [-1, -1, -1, -1]
+            a = 0
+            v = 1
+            f = -1
+            c = 0
+            ii = 1
+            dd += 1
 
         i = 1
         for x in names:
@@ -328,6 +359,37 @@ def pong_tournament_8_table(request):
         names[5] = request.POST.get('name_6')
         names[6] = request.POST.get('name_7')
         names[7] = request.POST.get('name_8')
+
+        xx = 0  #iterations
+        dd = 0  #list of names
+        a = 0   #array variable
+        v = 1   #how many dupes?
+        f = -1  #which ID has dupes?
+        c = 0   #index for checking
+        ii = 1  #ID indexing
+        dupes = [-1, -1, -1, -1, -1, -1, -1, -1]
+        while dd < 8:
+            while c < 8:
+                if names[dd] == names[c] and dd != c:
+                    if f == -1:
+                        f = dd
+                        dupes[0] = dd
+                    if v < 8:
+                        dupes[v] = c
+                        v += 1
+                c += 1
+            if f > -1:
+                while a < v and a < 8:
+                    names[dupes[a]] += ("(" + str(ii) + ")")
+                    ii += 1
+                    a += 1
+            dupes = [-1, -1, -1, -1]
+            a = 0
+            v = 1
+            f = -1
+            c = 0
+            ii = 1
+            dd += 1
 
         i = 1
         for x in names:

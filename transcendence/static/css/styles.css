@@ -230,6 +230,10 @@ img {
   color: var(--first-color);
 }
 
+.hidden{
+  display: none;
+}
+
 /* Change background header */
 
 .scroll-header {
@@ -629,10 +633,11 @@ img {
   color: black;
 }
 
-.register {
+.login {
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 0rem;
 }
 
 .btn_42 {

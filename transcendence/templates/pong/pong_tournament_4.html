@@ -1,26 +1,5 @@
 {% extends 'main.html' %} {% block content %}
 
-<script src="../../static/js/jquery.js"></script>
-<script>
-$(document).ready(function(){
-	var $form = $('form'),
-		url = '/pong_tournament_4/'
-        
-        $('#saveForm').on('click', function(e) {
-			e.stopPropagation();
-
-			var jqxhr = $.ajax({
-			url: url,
-			method: "GET",
-            dataType: "json",
-			data: $form.serialize()
-          }).success(
-            window.location.href = '/pong_tournament_4/'
-          );
-		})
-})
-</script>
-
 <div>
   <h1 class="heading">Pong Tournament</h1>
 </div>
@@ -35,15 +14,33 @@ $(document).ready(function(){
 <form action="/pong_tournament_4_table/" method="POST" class="modal_form">
     {% csrf_token %}
     <label for="name_1"><b data-i18n="p1"></b></label>
-    <input type="text" id="name_1" name="name_1" placeholder="1" required/>
+    <input type="text" id="name_1" name="name_1" placeholder="1" maxlength="12" required/>
     <label for="name_2"><b data-i18n="p2"></b></label>
-    <input type="text" id="name_2" name="name_2" placeholder="2" required/>
+    <input type="text" id="name_2" name="name_2" placeholder="2" maxlength="12" required/>
     <label for="name_3"><b data-i18n="p3"></b></label>
-    <input type="text" id="name_3" name="name_3" placeholder="3" required/>
+    <input type="text" id="name_3" name="name_3" placeholder="3" maxlength="12" required/>
     <label for="name_4"><b data-i18n="p4"></b></label>
-    <input type="text" id="name_4" name="name_4" placeholder="4" required/>
+    <input type="text" id="name_4" name="name_4" placeholder="4" maxlength="12" required/>
     <br>
     <input type="submit" value="OK" class="button" id="saveForm"/>
 </form>
 
+<script src="../../static/js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+	var $form = $('form'),
+		url = '/pong_tournament_4/'
+        
+        $('#saveForm').on('click', function(e) {
+			e.stopPropagation();
+
+			var jqxhr = $.ajax({
+			url: url,
+			method: "GET",
+            dataType: "json",
+			data: $form.serialize()
+          })
+		})
+})
+</script>
 {% endblock content %}

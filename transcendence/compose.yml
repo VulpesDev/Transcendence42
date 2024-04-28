@@ -23,7 +23,7 @@ services:
       - ./env/pgadmin.env
     ports:
       - "5050:80"
-      
+
   web:
     build: .
     command: bash -c "

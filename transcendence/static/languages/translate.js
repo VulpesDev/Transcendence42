@@ -20,10 +20,14 @@ function updateContent(langData)
 
 async function changeLanguage(lang)
 {
-    await setLanguagePreference(lang);
+    try {
+        await setLanguagePreference(lang);
+        const langData = await fetchLanguageData(lang);
+        updateContent(langData);
+    } catch (error) {
+        
+    }
     
-    const langData = await fetchLanguageData(lang);
-    updateContent(langData);
 }
 
 window.addEventListener('DOMContentLoaded', async () => {

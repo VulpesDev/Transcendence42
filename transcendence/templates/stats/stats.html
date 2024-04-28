@@ -73,9 +73,6 @@
         </p>
         <canvas id="donutGraph1"></canvas>
       </div>
-      <div>
-        <canvas id="donutGraph2"></canvas>
-      </div>
     </div>
     <div class="graph_line">
       <canvas id="lineGraph" class="graph_line"></canvas>
@@ -83,7 +80,9 @@
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script>
+
   const slider = document.querySelector('.switch input[type="checkbox"]');
   var p_wins = {{ pong_win }};
   var p_draws = {{ pong_draw }};
@@ -110,11 +109,6 @@
       options: {}
   });
 
-  const chart2 = new Chart(document.getElementById('donutGraph2'), {
-      type: 'doughnut',
-      options: {}
-  });
-
   slider.addEventListener('change', function() {
       // Update currentGame based on slider state
       currentGame = slider.checked ? 'ttt' : 'pong';
@@ -128,7 +122,6 @@
 
       // Update the charts
       chart1.update();
-      chart2.update();
 
       // Update history display
       document.getElementById('pong_history').style.display = currentGame === 'pong' ? 'block' : 'none';
@@ -137,5 +130,6 @@
 </script>
 
 <script src="../../static/languages/translate.js"></script>
+
 
 {% endblock content %}

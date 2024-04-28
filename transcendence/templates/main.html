@@ -1,9 +1,15 @@
 <!DOCTYPE html>
+<!--{% load static %}<!-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../static/css/styles.css" />
+    <link rel="shortcut icon" href="../../static/images/favicon.ico" type="image/x-icon">
+    <!--<link rel="icon" href="../../static/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static './favicon.ico' %}">
+    <link rel="shortcut icon" href="">
+    <link rel="shortcut icon" href="#"> -->
     <title>Transcendence</title>
   </head>
   <body>
@@ -14,7 +20,5 @@
       </div>
       {% block content %} {% endblock %}
     </div>
-
-    <script src="../static/js/Modal.js"></script>
   </body>
 </html>
