@@ -60,8 +60,9 @@
     </div>
   </div>
 </div>
+
 <script>
-     var users_data = {{ users_data | safe }};
+     //var users_data = {{ users_data | safe }};
      document.querySelectorAll(".profile_btn_field").forEach((btn) => {
        btn.addEventListener("click", (e) => {
          const fieldValue = e.currentTarget.getAttribute("data-field");

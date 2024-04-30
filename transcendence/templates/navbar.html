@@ -7,8 +7,9 @@
   <div class="profile">
     <img class="profile_pong" src="../static/assets/img/profile.jpeg" alt="" />
     <div class="dropdown-content">
-      <a href="" id="modalButton" class="dropdown_text hidden"><b data-i18n="configure_profile">
-	  </b></a>
+      <a href="" id="modalButton" class="dropdown_text hidden"
+        ><b data-i18n="configure_profile"> </b
+      ></a>
       <br />
       <a href="{% url 'logout' %}" class="dropdown_text"
         ><b data-i18n="logout"></b
@@ -28,8 +29,8 @@
           />
         </div>
         <div class="modal_text">
-          <p>Username: </p>
-          <p>Email: </p>
+          <p>Username:</p>
+          <p>Email:</p>
         </div>
       </div>
 
@@ -40,7 +41,12 @@
         <label for="email"><b data-i18n="email"></b></label>
         <input type="text" id="email" name="email" placeholder="Email" />
         <label for="img_url"><b data-i18n="img_url"></b></label>
-        <input type="text" id="img_url" name="img_url" placeholder="Image URL" />
+        <input
+          type="text"
+          id="img_url"
+          name="img_url"
+          placeholder="Image URL"
+        />
         <label for="bio"><b data-i18n="bio"></b></label>
         <input type="text" id="bio" name="bio" placeholder="Bio" />
         <br />
@@ -52,7 +58,7 @@
     <div class="nav__menu">
       <ul class="nav__list">
         <li class="nav__item nav__1">
-          <a href="/" class="nav__link"></a>
+          <a href="/home" class="nav__link"></a>
         </li>
         <li class="nav__item nav__2">
           <a href="/games" class="nav__link active-link"> </a>

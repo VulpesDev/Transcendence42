@@ -5,62 +5,22 @@ from django.shortcuts import render, redirect
 from .forms import MyUserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+
 from .models import PongGame, TTTGame, User, TournamentTable, TournamentProgress
 
-users = [
-    {"id": 1, "username": "user1", "email": "user1@example.com", "password": "user1","bio": "I am a software developer", "field_color": "blue"},
-    {"id": 2, "username": "user2", "email": "user2@example.com", "password": "user2","bio": "I am a software developer", "field_color": "white"},
-    {"id": 2, "username": "elias", "email": "elias", "password": "elias", "bio": "I am a software developer", "field_color": "green"},
-]
+from django.views.decorators.clickjacking import xframe_options_exempt
 
-    # Players who lose get their status set to "0"
-tournament_players = [
-    {"id": 0, "name": "user0", "status": 0},
-    {"id": 1, "name": "user1", "status": 1},
-    {"id": 2, "name": "user2", "status": 1},
-    {"id": 3, "name": "user3", "status": 1},
-    {"id": 4, "name": "user4", "status": 1},
-    {"id": 5, "name": "user5", "status": 1},
-    {"id": 6, "name": "user6", "status": 1},
-    {"id": 7, "name": "user7", "status": 1},
-    {"id": 8, "name": "user8", "status": 1},
-]
-
-    # There are two playmodes: "4P" and "8P" (1/2)
-    # 4P only has 3 matches:   1 vs 2 & 3 vs 4 
-    #                          => 1/2 vs 3/4
-    # 8P only has 7 matches:   1 vs 2 & 3 vs 4 & 5 vs 6 & 7 vs 8
-    #                          => 1/2 vs 3/4 & 5/6 vs 7/8
-    #                          => 1-4 vs 5-8
-tournament_history = [
-    {"playmode": "1", "match_id": "1", "p1_name": "tester1", "p2_name": "tester2", "winner": "tester1"},
-]
-
-users_data = [
-    {"id": 1, "username": "user1", "email": "user1@example.com", "password": "user1","bio": "I am a software developer", "field_color": "blue"},
-    {"id": 2, "username": "user2", "email": "user2@example.com", "password": "user2","bio": "I am a software developer", "field_color": "white"},
-    {"id": 2, "username": "elias", "email": "elias", "password": "elias", "bio": "I am a software developer", "field_color": "blue"},
-]
-    # Dummy game history data
-game_history = [
-        {'result': 'win', 'score': '8 : 6', 'against': 'Adriansadasds'},
-        {'result': 'lose', 'score': '4 : 10', 'against': 'John'},
-        {'result': 'lose', 'score': '9 : 1', 'against': 'Emily'},
-        {'result': 'lose', 'score': '9 : 1', 'against': 'Emily'},
-        {'result': 'win', 'score': '9 : 1', 'against': 'Emily'},
-        {'result': 'win', 'score': '9 : 1', 'against': 'Emily'},
-        {'result': 'lose', 'score': '7 : 7', 'against': 'Emily'},
-        {'result': 'win', 'score': '7 : 7', 'against': 'Emily'},
-        {'result': 'draw', 'score': '7 : 7', 'against': 'Emily'},
-        {'result': 'draw', 'score': '7 : 7', 'against': 'Emily'},
-        # Add more game results here...
-    ]
+@xframe_options_exempt
+def base(request):
+    return render(request, "base.html")
 
 # Create your views here.
+@xframe_options_exempt
 def home(request):
 	return render(request, "home/home.html")
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def pong(request):
     if request.method == "POST":
         result = request.POST.get('winner')
@@ -74,6 +34,7 @@ def pong(request):
     #return render(request, "pong/pong.html", {'users_data': users_data})
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def pong_4(request):
     if request.method == "POST":
         result = request.POST.get('winner')
@@ -85,12 +46,14 @@ def pong_4(request):
     return render(request, "pong/pong_4.html", {'users_data': users_data})
 
 # @login_required(login_url='login')
+# @xframe_options_exempt
 # def pong_ai(request):
 #     if request.method == "POST":
 #         print(request.POST.all())
 #     users_data = User.objects.get(username=request.user)
 #     return render(request, "pong/pong_ai.html", {'users_data': users_data})
 @login_required(login_url='login')
+@xframe_options_exempt
 def pong_ai(request):
     if request.method == "POST":
         result = request.POST.get('winner')
@@ -102,6 +65,7 @@ def pong_ai(request):
     return render(request, "pong/pong_ai.html", {'users_data': users_data})
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def pong_tournament_game_4(request):
     match_data = list(TournamentProgress.objects.all())
     users_data = User.objects.get(username=request.user)
@@ -113,6 +77,7 @@ def pong_tournament_game_4(request):
 
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def pong_tournament_game_8(request):
     match_data = list(TournamentProgress.objects.all())
     users_data = User.objects.get(username=request.user)
@@ -123,6 +88,7 @@ def pong_tournament_game_8(request):
     })
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def pong_tournament_4_table(request):
     if request.method == "POST" and request.POST.get('name_1'):
         print("==========================")
@@ -331,6 +297,7 @@ def pong_tournament_4_table(request):
 
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def pong_tournament_8_table(request):
     if request.method == "POST" and request.POST.get('name_1'):
         print("==========================")
@@ -680,18 +647,22 @@ def pong_tournament_8_table(request):
     })
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def pong_tournament_4(request):
     return render(request, "pong/pong_tournament_4.html")
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def pong_tournament_8(request):
     return render(request, "pong/pong_tournament_8.html")
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def games(request):
 	return render(request, "games/games.html")
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def ttt(request):
     if request.method == "POST":
         result = request.POST.get('winner')
@@ -706,6 +677,7 @@ def ttt(request):
 	#return render(request, "ttt/ttt.html")
     
 @login_required(login_url='login')
+@xframe_options_exempt
 def ttt_new(request):
     if request.method == "POST":
         result = request.POST.get('winner')
@@ -720,6 +692,7 @@ def ttt_new(request):
 	#return render(request, "ttt/ttt_new.html")
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def ttt_ai(request):
     if request.method == "POST":
         result = request.POST.get('winner')
@@ -733,6 +706,7 @@ def ttt_ai(request):
     return render(request, "ttt/ttt_ai.html", {'users_data': users_data})
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def ttt_new_ai(request):
     if request.method == "POST":
         result = request.POST.get('winner')
@@ -746,6 +720,7 @@ def ttt_new_ai(request):
     return render(request, "ttt/ttt_new_ai.html", {'users_data': users_data})
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def stats(request):
     if request.user.is_authenticated:
         logged_in_user = request.user
@@ -766,8 +741,10 @@ def stats(request):
 
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def profile(request):
-    if request.method == 'POST':
+    users_data = User.objects.get(username=request.user)
+    if request.method == 'POST' and request.POST.get('field_color'):
         field_color = request.POST.get('field_color')
         user = User.objects.get(username=request.user)
         user.field_color = field_color
@@ -776,6 +753,7 @@ def profile(request):
     return render(request, "profile/profile.html", {'users_data': users_data})
 
 @login_required(login_url='login')
+@xframe_options_exempt
 def edit_profile(request):
     if request.method == 'POST':
         if request.POST.get('email') != '':
@@ -805,6 +783,7 @@ def edit_profile(request):
     # print (context)
     return render(request, "edit_profile/edit_profile.html")
 
+@xframe_options_exempt
 def loginPage(request):
     page = 'login'
     if request.user.is_authenticated:
@@ -830,6 +809,7 @@ def loginPage(request):
     context = {'page': page}
     return render(request, 'login_register.html', context)
 
+@xframe_options_exempt
 def registerPage(request):
     form = MyUserCreationForm()
     if request.method == 'POST':
@@ -849,6 +829,7 @@ def registerPage(request):
 
     return render(request, 'login_register.html', {'form': form})
 
+@xframe_options_exempt
 def logoutUser(request):
     logout(request)
     return redirect('home')

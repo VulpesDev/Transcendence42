@@ -1,8 +1,5 @@
-{% extends 'main.html' %} {% block content %}
-{% load static %}
-<header>
-
-</header>
+{% extends 'main.html' %} {% block content %} {% load static %}
+<header></header>
 <div>
   <h1 class="heading"><b data-i18n="games"></b></h1>
 </div>
@@ -23,13 +20,13 @@
             class="pong_tournament_4 pong_tournament_player"
             src="../../static/assets/img/4p.png"
             alt="4 people"
-          /></a>
+        /></a>
         <a href="/pong_tournament_8">
           <img
             class="pong_tournament_8 pong_tournament_player"
             src="../../static/assets/img/8p.png"
             alt="8 people"
-          /></a>
+        /></a>
       </div>
     </div>
   </div>
@@ -39,7 +36,7 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h1 class="modal_header"><b data-i18n="select_gamemode"></b></h1>
-   <div class="ttt_modal">
+    <div class="ttt_modal">
       <div class="ttt_players">
         <a href="/ttt">
           <img
@@ -48,7 +45,7 @@
             alt=""
           />
         </a>
-		<a href="/ttt_new">
+        <a href="/ttt_new">
           <img
             class="ttt_new ttt_player"
             src="../../static/assets/img/2p_ttt.png"
@@ -57,11 +54,11 @@
         </a>
         <a href="/ttt_ai">
           <img
-           class="ttt_ai ttt_player"
+            class="ttt_ai ttt_player"
             src="../../static/assets/img/ai.png"
             alt=""
         /></a>
-		<a href="/ttt_new_ai">
+        <a href="/ttt_new_ai">
           <img
             class="ttt_new_ai ttt_player"
             src="../../static/assets/img/ai_ttt.png"
